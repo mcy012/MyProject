@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adquiz.dao.adquizDao">
+
+    <!-- 유저 정보 -->
+    <select id="userInfo" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT userId, userName, userPhoneNumber, userLeftChance, pointTotal
+        FROM user JOIN point ON userId = #{userId} and user.userId = point.pointId
+    </select>
+
+    <!-- 회원가입 -->
+    <insert id="userSignUp" parameterType="java.util.Map">
+        INSERT INTO user(userId, userPassword, userName, userPhoneNumber, userAddress, userSignUpDateTime, userLeftChance)
+        VALUES (#{userId}, #{userPassword}, #{userName}, #{userPhoneNumber}, #{userAddress}, now(), 5)
+    </insert>
+    <insert id="pointSignUp" parameterType="java.util.Map">
+        INSERT INTO point(pointId, pointTotal)
+        VALUES (#{pointId}, 100)
+    </insert>
+
+    <!-- 회원로그인 -->
+    <select id="userLogin" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT count(*) as CNT
+        FROM user
+        WHERE userId = #{userId} and userPassword = #{userPassword}
+    </select>
+
+    <!-- 물품 정보 가져오기-->
+    <select id="goodsList" parameterType="java.lang.Integer" resultType="java.util.Map">
+        SELECT goodsSeq, goodsName, goodsPrice, goodsStock
+        FROM goods ORDER BY goodsSeq
+    </select>
+
+    <!-- 물품을 샀을 때 재고 -1 -->
+    <update id="goodsStockBuy" parameterType="java.util.Map">
+        UPDATE goods
+        SET goodsStock = goodsStock -1
+        WHERE goodsSeq = #{goodsSeq}
+    </update>
+
+    <!-- 포인트가 변화할 때  -->
+    <update id="pointUpdate" parameterType="java.util.Map">
+        UPDATE point
+        SET pointTotal = #{pointTotal}, pointChangeTime = now(), pointUpDown = #{pointUpDown}
+        WHERE pointId = #{pointId}
+    </update>
+
+    <!-- 게임방에 들어갔을 때 -->
+    <update id="chanceMinus" parameterType="java.util.Map">
+        UPDATE user
+        SET userLeftChance = userLeftChance - 1
+        WHERE userId = #{userId}
+    </update>
+
+    <!-- 물품 샀을 때 구매 정보 -->
+    <insert id="buyInfo" parameterType="java.util.Map">
+        INSERT INTO buy(buySeq, buyGoodsName, buyDateTime, buyUserId)
+        VALUES (null, (SELECT goodsName FROM goods WHERE goodsSeq = #{goodsSeq}), now(), #{buyUserId})
+    </insert>
+
+
+    <!-- 객관식인데 -->
+    <resultMap id="quizMap" type="adquiz.dto.quiz">
+        <id property="quizSeq" column="quizSeq"/>
+        <result property="quizContent" column="quizContent"/>
+        <collection property="selectorList" column="quizSeq" javaType="java.util.ArrayList" ofType="adquiz.dto.selector" select="selector"/>
+        <collection property="answerList" column="quizSeq" javaType="java.util.ArrayList" ofType="adquiz.dto.answer" select="answer"/>
+    </resultMap>
+    <resultMap id="selectorMap" type="adquiz.dto.selector">
+        <id property="selectorSeq" column="selectorSeq"/>
+        <result property="quizSeq" column="quizSeq"/>
+        <result property="selectorContent" column="selectorContent"/>
+    </resultMap>
+    <resultMap id="answerMap" type="adquiz.dto.answer">
+        <id property="answerSeq" column="answerSeq"/>
+        <result property="quizSeq" column="quizSeq"/>
+        <result property="answerContent" column="answerContent"/>
+    </resultMap>
+    <select id="quizList" resultMap="quizMap">
+        SELECT quizSeq, quizContent, selectorList, answerList FROM quiz
+    </select>
+    <select id="selector" resultMap="selectorMap">
+        SELECT selectorSeq, quizSeq, selectorContent FROM selector WHERE quizSeq = #{quizSeq}
+    </select>
+    <select id="answer" resultMap="answerMap">
+        SELECT answerSeq, quizSeq, answerContent FROM answer WHERE quizSeq = #{quizSeq}
+    </select>
+
+
+
+
+
+
+
+
+    <!-- 객관식 가져오는건데 -->
+    <select id="selQuiz" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT quizContent, selectorContent
+        FROM quiz JOIN selector ON quiz.quizSeq = selector.quizSeq AND quiz.quizSeq  = 1
+    </select>
+
+    <!-- 주관식 문제 가져오기-->
+    <select id="getQuiz" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT quiz.quizSeq, quizContent, answerContent
+        FROM quiz JOIN answer
+        ON quiz.quizSeq = answer.quizSeq
+        ORDER BY rand() LIMIT 1
+    </select>
+
+</mapper>
