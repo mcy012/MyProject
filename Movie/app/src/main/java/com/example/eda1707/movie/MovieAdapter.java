@@ -21,11 +21,11 @@ import butterknife.ButterKnife;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
-    Context context;
+    private Context context;
 
-    List<MovieInfo> items = new ArrayList<>();
+    private List<MovieInfo> items = new ArrayList<>();
 
-    OnItemClickListener listener;
+    private OnItemClickListener listener;
 
     public static interface OnItemClickListener{
         public void onItemClick(ViewHolder holder, View view, int position);
@@ -58,11 +58,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     public MovieInfo getItem(int position){
         return items.get(position);
-
     }
 
-    public void addItem(MovieInfo item){
-        items.add(item);
+    public List<MovieInfo> getItems() {
+        return items;
     }
 
     public void addItems(List<MovieInfo> items) {

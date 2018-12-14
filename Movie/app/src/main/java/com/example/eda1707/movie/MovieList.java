@@ -5,8 +5,17 @@ import java.util.List;
 
 public class MovieList {
 
-    List<MovieInfo> items = new ArrayList<MovieInfo>();
-    int total;
+    private List<MovieInfo> items = new ArrayList<MovieInfo>();
+    private int total;
+
+    public List<MovieInfo> getItems() {
+        return items;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
 }
 
 

@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     private MovieAdapter movieAdapter;
 
-    InputMethodManager mInputMethodManager;
+    private InputMethodManager mInputMethodManager;
 
-    ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -45,15 +45,16 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.editText)
     EditText editText;
 
-    int movieTotal;
+    private int movieTotal;
 
-    int startNumber;
+    private int startNumber;
     private final static int DISPLAY_NUMBER = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -70,12 +71,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * 리사이클러뷰 끝까지 스크롤 했을 때 감지하는 거
+         */
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 if (!recyclerView.canScrollVertically(1)) {
-                    if(movieTotal > movieAdapter.items.size())
+                    if(movieTotal >  movieAdapter.getItems().size()) {
                         sendRequest();
+                    }
                 }
             }
         });
@@ -85,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 엑티비티 메인에 버튼 클릭 이벤트
+     * @param v 메인 뷰
+     */
     @OnClick(R.id.button)
     public void onClick(View v) {
 
@@ -132,6 +141,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 프로그레스다이얼로그 구현
+     */
     private void showProgressDialog() {
         dialog = new ProgressDialog(this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -139,10 +151,16 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    /**
+     * 프로그레스다이얼로그 종료
+     */
     private void cancelProgressDialog() {
         dialog.dismiss();
     }
 
+    /**
+     * api에 요청보내기
+     */
     public void sendRequest() {
 
         String url = "https://openapi.naver.com/v1/search/movie.json?query=" + editText.getText().toString() + "&display=" + DISPLAY_NUMBER + "&start=" + startNumber;
@@ -178,14 +196,20 @@ public class MainActivity extends AppCompatActivity {
         AppHelper.requestQueue.add(request);
     }
 
+    /**
+     * 요청 받았을 때 실행
+     * @param response api에 요청해서 받은 response 값
+     */
     public void processResponse(String response) {
         Gson gson = new Gson();
         MovieList movieList = gson.fromJson(response, MovieList.class);
 
-        if(movieList != null && movieList.items.size() != 0) {
-            movieAdapter.addItems(movieList.items);
-            startNumber += movieList.items.size();
-            movieTotal = movieList.total;
+        Log.i("test", response);
+
+        if(movieList != null && movieList.getItems().size() != 0) {
+            movieAdapter.addItems(movieList.getItems());
+            startNumber += movieList.getItems().size();
+            movieTotal = movieList.getTotal();
         } else {
             Toast.makeText(this, "\'"+ editText.getText().toString() + "\' 검색 결과는 없습니다..", Toast.LENGTH_SHORT).show();
             movieTotal = 0;
