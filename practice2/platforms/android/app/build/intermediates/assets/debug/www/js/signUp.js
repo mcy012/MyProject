@@ -42,28 +42,33 @@ $(document).ready(function() {
         }
         if(inputAddress.length<1) {
             alert("주소를 입력하세요");
-            return;
         }
+            return;
 
         var jsonData = {userName:inputName, userId:inputId, userPassword:inputPassword, userPhoneNumber:inputPhoneNumber, userAddress:inputAddress };
         var jsonData2 = {pointId:inputId};
 
         $.ajax({
             type: 'POST',
-            url: 'http://10.0.2.2:9000/signUp',
+            url: 'http://192.168.0.149:9000/signUp',
             data: jsonData,
             success:function(args){
                 alert('회원가입에 성공하셨습니다.');
                 location.href = "./index.html";
             },
             error:function(e){
-                alert("회원가입이 안됩니다");
+                if(jsonData.userId == inputId) {
+                    alert("이미 등록된 아이디입니다.");
+                }
+                else{
+                    alert("db 서버 연결 오류");
+                }
             }
         });
 
         $.ajax({                                        //가입시 100시작
             type: 'POST',
-            url: 'http://10.0.2.2:9000/pointSignUp',
+            url: 'http://192.168.0.149:9000/pointSignUp',
             data: jsonData2,
             success:function(args){
             },

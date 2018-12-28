@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <title>보통 게임</title>
+    <style>
+        article{
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-nav-bar title-bar">
+        <div class="title-bar-left">
+        </div>
+        <div class="title-bar-center">
+            <span class="title-bar-text">메뉴</span>
+        </div>
+        <div class="title-bar-right">
+        </div>
+    </div>
+    <article>
+        <h2 style="margin: 20px"><strong>난이도 2</strong></h2>
+    </article>
+    <div style="float:right">
+        <table class="type02" id="table_point" border style="width: 200px; height: 20px">
+            <tr>
+                <th>내 포인트</th>
+                <th id="my_point_total"></th>
+            </tr>
+            <tr>
+                <th>남은 기회</th>
+                <th id="my_left_chance"></th>
+            </tr>
+        </table>
+    </div>
+    <p style="clear: both">&nbsp;</p>
+   
+    <iframe width="360" height="315" src="https://www.youtube.com/embed/k0itCGsH5wQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>   </iframe>
+
+    <fieldset class="fieldset">
+        <legend>정답?</legend>
+        <div>
+            <h3 id="question2"></h3>
+            <input type="text" style="width = 100px" placeholder="정답을 입력하세요." id="answer2" />
+            <button class='button small' id='submit2'>답 제출</button><br>
+        </div>
+    </fieldset>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/myInfo.js"></script>
+<script src="js/answer.js"></script>
+<script src="js/foundationJS/foundation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+
+</html>

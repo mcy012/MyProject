@@ -30,4 +30,22 @@
     <feature name="CordovaHttpPlugin">
         <param name="android-package" value="com.synconset.cordovahttp.CordovaHttpPlugin" />
     </feature>
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <preference name="Orientation" value="portrait" />
+    <platform name="android">
+        <!-- 세로모드에서의 인트로 이미지 -->
+        <splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi" />
+    </platform>
+
+    <!-- 인트로 화면 자동 종료 방지 -->
+    <preference name="AutoHideSplashScreen" value="false" />
+
+    <!-- 인트로화면이 단말기 방향 전환시 함께 회전할지 여부(android용)-->
+    <preference name="SplashMaintainAspectRatio" value="false" />
 </widget>

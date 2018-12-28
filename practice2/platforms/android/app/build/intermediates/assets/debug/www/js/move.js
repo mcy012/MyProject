@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    document.querySelector('#myInfo').onclick = function(){
+    $("#myInfo").click(function(){
 
         $.ajax({
             type:"GET",
@@ -11,10 +11,10 @@ $(document).ready(function(){
             error: function error(){
                 alert("error");
             }
-        });
-    };
+        })
+    })
         
-    document.querySelector('#goods').onclick = function(){
+    $("#goods").click(function(){
         $.ajax({
             type:"GET",
             url:"./goods.html",
@@ -24,20 +24,23 @@ $(document).ready(function(){
             error: function error(){
                 alert("error");
             }
-        });
-    }
+        })
+    })
  
+    $("#main").click(function(){
+        location.href="./mainRoom.html";
+    })
     
-    document.querySelector('#main').onclick = function(){
+    $("#basket").click(function(){
         $.ajax({
             type:"GET",
-            url:"./mainRoom.html",
+            url:"./basket.html",
             success: function test(a){
                 $("#mainRoom").html(a);
             },
             error: function error(){
                 alert("error");
             }
-        });
-    };
+        })
+    })
 });

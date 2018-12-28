@@ -4,39 +4,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0'>
-    <title>회원가입</title>
+    <title>광고퀴즈 상품교환</title>
     <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="css/bottom.css" rel="stylesheet">
+    <style>
+        #table_goods {
+            width: 150px font-size:small
+        }
+
+        img {
+            height: 150px;
+            width: 150px;
+        }
+
+        .buy {
+            background-color: white;
+            border-radius: 0.375em;
+            border: 0;
+            box-shadow: inset 0 0 0 2px #f56a6a;
+            color: #f56a6a;
+            font-weight: 600;
+            height: 2.0em;
+            width: 70px;
+        }
+
+        .position-left {
+            width: 110px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="title-bar">
-        <div class="title-bar-left">
-            <button type="button" class="menu-icon" data-toggle="offCanvasNestedOverlap">
-
-            </button>
-            <span class="title-bar-title">Foundation</span>
-        </div>
-        <div class="title-bar-right">
-            <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
-        </div>
+    <h2 style="margin: 20px" align="center"><strong>상품 교환</strong></h2>
+    <div align="right" style="padding: 15px">
     </div>
+    <table class="type02" border>
+        <tr>
+            <th style="height: 150px; width:150px">
+                <button class="itemImage" data-buy="1"><img src="https://t1.daumcdn.net/cfile/tistory/2655CF47588AB4B437"></button>
+            </th>
+            <th style="width: 150px">
+                <button class="itemImage" data-buy="2">
+                    <img src="http://lkphoto.co.kr/web/product/medium/201805/464_shop1_15266331153477.jpg"></button>
+            </th>
+        </tr>
+        <tr>
+            <td id="itemPrice1"></td>
+            <td id="itemPrice2"></td>
+        </tr>
+        <tr>
+            <td style="width: 150px">
+                <button class="itemImage" data-buy="3">
+                    <img src="http://image.auction.co.kr/itemimage/da/51/3e/da513ec76.jpg">
+                </button>
+            </td>
+            <td style="height: 150px">
+                <button class="itemImage" data-buy="4">
+                    <img src="http://www.wansophone.com/cgi/item/post_data/BPDC017WH-1.jpg">
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td id="itemPrice3"></td>
+            <td id="itemPrice4"></td>
+        </tr>
+        <tr>
+            <td>
+                <button class="itemImage" data-buy="5">
+                    <img src="https://mi0.rightinthebox.com/images/384x384/201710/nbhoza1508295332049.jpg">
+                </button>
+            </td>
+            <td>
+                <button class="itemImage" data-buy="6">
+                    <img src="https://li3.rightinthebox.com/images/190x250/201611/hjlvzn1478942885586.jpg">
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td id="itemPrice5"></td>
 
-    
-    <div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
-        <div class="callout">I'm a nested off-canvas that uses overlap transition and the same position as the other nested off-canvas.</div>
-    </div>
+            <td id="itemPrice6"></td>
+        </tr>
+        <tr>
+            <td style="height: 150px">
+                <button class="itemImage" data-buy="7">
+                    <img src="http://www.54260967.com/upload/product/mimg3/IIBZ0000958m.jpg">
+                </button>
+            </td>
+            <td>
+                <button class="itemImage" data-buy="8">
+                    <img src="http://www.dpick.co.kr/wp-content/uploads/2016/07/339712_550.jpg">
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td id="itemPrice7"></td>
 
-    <p>Enim, repudiandae officia dolores temporibus soluta, ipsa saepe tempora ipsum laudantium in mollitia quidem, nisi magni provident hic architecto rem culpa beatae.</p>
+            <td id="itemPrice8"></td>
+        </tr>
+    </table>
+    <footer>
+        <div class="mobile-app-icon-bar">
+            <button><i class="fa fa-gamepad" id="main" aria-hidden="true"></i></button>
+            <button><i class="fa fa-gift" id="goods" aria-hidden="true"></i></button>
+            <button><i class="fa fa-shopping-basket" id="basket" aria-hidden="true"></i></button>
+            <button><i class="fa fa-user-o" id="myInfo" aria-hidden="true"></i></button>
+        </div>
+    </footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="js/signUp.js"></script>
-<script src="js/foundationJS/foundation.min.js"></script>
-<script src="js/foundationJS/foundation.core.js"></script>
-<script src="js/foundationJS/foundation.offcanvas.js"></script>
+<script src="js/myInfo.js"></script>
+<script src="js/goodsList.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script src="js/move.js"></script>
 <script>
-    $(document).ready(function() {
-        $(document).foundation();
-    })
+    $(document).foundation();
 </script>
 
 </html>

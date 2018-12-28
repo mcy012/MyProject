@@ -6,51 +6,27 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
     <title>내정보</title>
     <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="css/bottom.css" rel="stylesheet">
     <style>
-        .position-left{
+        .position-left {
             width: 110px;
         }
+
     </style>
 </head>
 
 <body>
-    <div class="mobile-nav-bar title-bar">
-        <div class="title-bar-left">
-            <button type="button" class="menu-icon" data-toggle="offCanvasNestedOverlap">
-            </button>
-        </div>
-        <div class="title-bar-center">
-            <span class="title-bar-text">My Page</span>
-        </div>
-        <div class="title-bar-right">
-            <button class="menu-icon" id="main"></button>
-        </div>
-    </div>
-    <div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
-        <div class="callout">
-            <button class="button small" id="goods" type="button">상품교환</button>
-            <button class="button small" id="myInfo" type="button">내 정보</button>
-            <button class="button small" id="logout" type="button">로그아웃</button>
-        </div>
-    </div>
     <h2 style="margin: 20px"><strong>내 정보</strong></h2>
     <div align="right" style="padding: 20px">
     </div>
     <table id="my_info_table" class="type02">
         <tr>
-            <th>이름</th>
-            <td id="my_name"></td>
-        </tr>
-        <tr>
-            <th>아이디</th>
+            <th>닉네임</th>
             <td id="my_id"></td>
         </tr>
         <tr>
-            <th>전화번호</th>
-            <td id="my_phone_number"></td>
-        </tr>
-        <tr>
-            <th>현재포인트</th>
+            <th>포인트</th>
             <td id="my_point_total"></td>
         </tr>
         <tr>
@@ -58,6 +34,14 @@
             <td id="my_left_chance"></td>
         </tr>
     </table>
+    <footer>
+        <div class="mobile-app-icon-bar">
+            <button><i class="fa fa-gamepad" id="main" aria-hidden="true"></i></button>
+            <button><i class="fa fa-gift" id="goods" aria-hidden="true"></i></button>
+            <button><i class="fa fa-shopping-basket" id="basket" aria-hidden="true"></i></button>
+            <button><i class="fa fa-user-o" id="myInfo" aria-hidden="true"></i></button>
+        </div>
+    </footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/myInfo.js"></script>
@@ -66,10 +50,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
 <script>
     $(document).foundation();
-    document.querySelector('#logout').onclick = function() {
-        alert("로그아웃되었습니다.");
-        localStorage.clear();
-        location.href = "./index.html";
-    };
 
 </script>

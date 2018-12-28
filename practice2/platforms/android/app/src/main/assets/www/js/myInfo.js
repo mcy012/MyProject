@@ -2,25 +2,22 @@
 
     $.support.cors = true;
 
-    var myId = localStorage.getItem('id');
+    var myNick = localStorage.getItem('nickname');
 
         $.ajax({
-            url: 'http://10.0.2.2:9000/myInfo/'+ myId +'',
+            url: 'http://192.168.0.149:9000/myInfo/'+ myNick +'',
             type: 'GET',
             success: function(data) {
                 var userObj = data;
                 
-                if(userObj.userId == myId) {
-                    $('#my_name').text(userObj.userName);
-                    $('#my_id').text(userObj.userId);
-                    $('#my_phone_number').text(userObj.userPhoneNumber);
-                    $('#my_point_total').text(userObj.pointTotal);
-                    $('#my_left_chance').text(userObj.userLeftChance);
+                if(userObj.userId == myNick) {
+                    $("#my_id").text(userObj.userId);
+                    $("#my_point_total").text(userObj.pointTotal);
+                    $("#my_left_chance").text(userObj.userLeftChance);
                 }
             },
-
             error: function(request, status, error) {
-                alert('내 정보를 가져오기에 실패하였습니다.');
+                alert('db서버 연결 오류');
             }
         });
 

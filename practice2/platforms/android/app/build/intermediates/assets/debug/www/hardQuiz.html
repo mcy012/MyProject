@@ -13,6 +13,16 @@
 </head>
 
 <body>
+    <div class="mobile-nav-bar title-bar">
+        <div class="title-bar-left">
+        </div>
+        <div class="title-bar-center">
+            <span class="title-bar-text">메뉴</span>
+        </div>
+        <div class="title-bar-right">
+        </div>
+    </div>  
+   
     <article>
     <h2 style="margin: 20px"><strong>난이도 3</strong></h2>
     </article>
@@ -30,19 +40,29 @@
     </div>
     <p style="clear: both">&nbsp;</p>
     
-    <div>
-      <!--
-        <iframe width="360" height="315" src="https://www.youtube.com/embed/Xn1oifhoJyc?&amp;autoplay=1&amp;loop=1"                     frameborder="0" allowfullscreen>
-        </iframe>
-     -->
+    <div id="video">  
+    <iframe width="360" height="315" src="https://www.youtube.com/embed/k0itCGsH5wQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>   </iframe>
+    </div>
+    <div id="hard">
+        <h3 id="question2"></h3>
+        <input type="text" style="width = 100px" placeholder="정답을 입력하세요." id="answer2" />
+        <button class='button small' id='submit2'>답 제출</button><br>
     </div>
     <div>
-        <button class="button">문제풀기</button>
+        <button class="button" id="go" onclick=visible()>문제풀기</button>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/myInfo.js"></script>
-<script src="js/answer.js"></script>
+<script src="js/answer3.js"></script>
 <script src="js/foundationJS/foundation.min.js"></script>
+<script>
+    function visible(){
+        $("#video").hide();
+        $("#hard").show();
+        $("#go").hide();
+    }
+    
+</script>
 
 </html>

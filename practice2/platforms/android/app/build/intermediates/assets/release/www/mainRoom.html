@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>광고퀴즈</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <style>
+        header {
+            border-bottom: solid 5px #f56a6a;
+            padding: 20px;
+        }
+        .t1 {
+            float: right;
+        }
+        .t2 {
+            padding: 20px;
+        }
+        .tabs-title > a {
+            font-size: 18px;
+            color: dimgrey;
+        }
+        .position-left{
+            width: 110px;
+        }
+        
+     </style>
+</head>
+<body> 
+    <div id="mainRoom">
+        <div class="mobile-nav-bar title-bar">
+            <div class="title-bar-left">
+                <button type="button" class="menu-icon" data-toggle="offCanvasNestedOverlap">
+                </button>
+            </div>
+            <div class="title-bar-center">
+                <span class="title-bar-text">메뉴</span>
+            </div>
+            <div class="title-bar-right">
+                <button id="main"><img class="menu-icon" src="img/home.jpg"/></button>
+            </div>
+        </div>
+        <div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
+            <div class="callout">
+                <button class="button small" id="myInfo" type="button">내 정보</button>       
+                <button class="button small" id="goods" type="button">상품교환</button>
+                <button class="button small" id="logout" type="button">로그아웃</button>
+            </div>
+        </div>
+
+        <header>
+            <br>
+            <h2 id='myId' align="right" style="font-weight: bold"></h2>
+        </header>
+        <ul class="tabs" data-tabs id="example-tabs" style="width: auto">
+            <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">난이도 1</a></li>
+            <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">난이도 2</a></li>
+            <li class="tabs-title"><a data-tabs-target="panel3" href="#panel3">난이도 3</a></li>
+        </ul>
+        <div class="tabs-content" data-tabs-content="example-tabs">
+            <div class="tabs-panel is-active" id="panel1">
+                <div class="card" style="width: 300px;">
+                    <div class="card-divider">
+                        <p style="font-weight: bold">난이도 1입니다.</p>
+                    </div>
+                    <img src="img/easy.png" style="height: 200px" />
+                    <div class="card-section">
+                        <h4>50포인트</h4>
+                        <p>객관식 문제입니다.</p>
+                        <input class="start" id="game1" type="button" value="Start" data-url="easyQuiz" />
+                    </div>
+                </div>
+            </div>
+            <div class="tabs-panel" id="panel2">
+                <div class="card" style="width: 300px;">
+                    <div class="card-divider">
+                        <p style="font-weight: bold">난이도 2입니다.</p>
+                    </div>
+                    <img src="img/normal.png" style="height: 200px" />
+                    <div class="card-section">
+                        <h4>70포인트</h4>
+                        <p>주관식 문제입니다.</p>
+                        <input class="start" id="game2" type="button" value="Start" data-url="normalQuiz" />
+                    </div>
+                </div>
+            </div>
+            <div class="tabs-panel" id="panel3">
+                <div class="card" style="width: 300px;">
+                    <div class="card-divider">
+                        <p style="font-weight: bold">난이도 3입니다.</p>
+                    </div>
+                    <img src="img/hard.png" style="height: 200px"/>
+                    <div class="card-section">
+                        <h4>100포인트</h4>
+                        <p>주관식 문제입니다.</p>
+                        <input class="start" id="game3" type="button" value="Start" data-url="hardQuiz" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/gameStart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script src="cordova.js"></script>
+<script src="js/move.js"></script>
+<script src="js/backExit.js"></script>
+<script>
+    $(document).foundation();
+    document.querySelector('#logout').onclick = function() {
+        alert("로그아웃되었습니다.");
+        localStorage.clear();
+        location.href = "./index.html";
+    };
+
+    var myId = localStorage.getItem('id');
+
+    var templete = myId + '님 반갑습니다.'
+
+    $('#myId').append(templete);
+
+</script>
+
+</html>

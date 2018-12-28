@@ -3,18 +3,21 @@
     $.support.cors = true;
 
         $.ajax({
-            url: 'http://10.0.2.2:9000/goodsList',
+            url: 'http://192.168.0.149:9000/goodsList',
             type: 'GET',
             success: function(data) {
+                var goodsSeq = $(this).data("buy");
+
                 for(var seq = 0; seq < data.length; seq++) {
                     var goods = data[seq];
-                    $("#item"+ Number(seq+1) + "").text(goods.goodsPrice);
+                    $("#itemPrice"+ Number(seq+1) + "").text(goods.goodsPrice);
+                    $("#itemName"+ Number(seq+1) + "").text(goods.goodsName);
                     $(".type02").attr("readonly",true);
                }
             },
 
             error: function(request, status, error) {
-                alert('내 정보를 가져오기에 실패하였습니다.');
+                alert('물품정보를 가져오는데 실패하였습니다.');
             }
         });
  });
