@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     $.support.cors = true;
 
-    $(".fa-shopping-cart, .itemImage").click(function() {
+    $(".itemImage").click(function() {
 
         var goodsSeq = $(this).data("buy");
 

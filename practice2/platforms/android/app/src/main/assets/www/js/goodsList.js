@@ -10,8 +10,8 @@
 
                 for(var seq = 0; seq < data.length; seq++) {
                     var goods = data[seq];
-                    $("#itemPrice"+ Number(seq+1) + "").text(goods.goodsPrice);
-                    $("#itemName"+ Number(seq+1) + "").text(goods.goodsName);
+                    $(".itemPrice"+ Number(seq+1) + "").text(goods.goodsPrice);
+                    $(".itemName"+ Number(seq+1) + "").text(goods.goodsName);
                     $(".type02").attr("readonly",true);
                }
             },

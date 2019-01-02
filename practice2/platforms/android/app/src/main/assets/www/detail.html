@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <title>내정보</title>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="css/bottom.css" rel="stylesheet">
+    <style>
+        .button {
+            display: inline;
+        }
+        .info > input{
+            display: inline;
+        }
+        div>p{
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>QUIZ</header>
+<div id="name1" align="center" style="border-bottom: 1px solid;">
+</div>
+<div style="width: 250px; height: 250px; margin: auto; padding-top: 20px; padding-bottom: 20px" >
+    <img style="width: 250px; height: 250px; padding-bottom: 20px" id="image">
+</div>
+<div style="padding-top: 20px; padding-left: 10px">
+    <p id="goodName"></p>
+    <p id="goodPrice"></p>
+</div>
+<div class="input-group plus-minus-input">
+  <div class="input-group-button">
+    <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity">
+      <i class="fa fa-minus" aria-hidden="true"></i>
+    </button>
+  </div>
+  <input class="input-group-field" type="number" name="quantity" value="0">
+  <div class="input-group-button">
+    <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+<div>
+   <p>총 금액</p>
+</div>
+<div align="center">
+<button class="button">
+    장바구니
+</button>
+<button class="button">
+    구매하기
+</button>
+</div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/foundationJS/foundation.min.js"></script>
+<script src="js/plmi.js"></script>
+<script src="js/goodsListOne.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>

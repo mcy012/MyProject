@@ -33,100 +33,85 @@
             width: 110px;
         }
 
+        .list {
+            width: auto;
+            list-style-position: inside;
+            list-style-type: none;
+        }
+
+        .list>li {
+            display: inline-block;
+            margin: 8px;
+            text-align: center;
+            background-color: beige;
+        }
     </style>
 </head>
 
 <body>
-    <h2 style="margin: 20px" align="center"><strong>상품 교환</strong></h2>
+    <header><h2 align="center"><strong>상품 교환</strong></h2></header>
     <div align="right" style="padding: 15px">
     </div>
-    <ul class="tabs" data-tabs id="example-tabs" style="width: auto">
-        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">상품 1</a></li>
-        <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">상품 2</a></li>
-        <li class="tabs-title"><a data-tabs-target="panel3" href="#panel3">상품 3</a></li>
-    </ul>
-    <div class="tabs-content" data-tabs-content="example-tabs" style="margin-bottom: 100px">
-        <div class="tabs-panel is-active" id="panel1">
-            <table class="type02" id="table_goods" border>
-                <tr>
-                    <th style="height: 150px; width:150px" >
-                        <button class="itemImage" data-buy="1"><img src="https://t1.daumcdn.net/cfile/tistory/2655CF47588AB4B437"></button>
-                    </th>
-                    <th style="width: 150px">
-                        <button class="itemImage" data-buy="2">
-                        <img src="http://lkphoto.co.kr/web/product/medium/201805/464_shop1_15266331153477.jpg"></button>
-                    </th>
-                </tr>
-                <tr>
-                    <td id="itemPrice1"></td>
-                    <td id="itemPrice2"></td>
-                </tr>
-                <tr>
-                    <td style="width: 150px">
-                        <button class="itemImage" data-buy="3">
-                        <img src="http://image.auction.co.kr/itemimage/da/51/3e/da513ec76.jpg">
-                        </button>
-                    </td>
-                    <td style="height: 150px">
-                        <button class="itemImage" data-buy="4">
-                        <img src="http://www.wansophone.com/cgi/item/post_data/BPDC017WH-1.jpg">
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="itemPrice3"></td>
-                    <td id="itemPrice4"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="itemImage" data-buy="5">
-                        <img src="https://mi0.rightinthebox.com/images/384x384/201710/nbhoza1508295332049.jpg">
-                        </button>
-                    </td>
-                    <td>
-                       <button class="itemImage" data-buy="6">
-                        <img src="https://li3.rightinthebox.com/images/190x250/201611/hjlvzn1478942885586.jpg">
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="itemPrice5"></td>
-                   
-                    <td id="itemPrice6"></td>
-                </tr>
-                <tr>
-                    <td style="height: 150px">
-                        <button class="itemImage" data-buy="7">
-                        <img src="http://www.54260967.com/upload/product/mimg3/IIBZ0000958m.jpg">
-                        </button>
-                    </td>
-                    <td>
-                        <button class="itemImage" data-buy="8">
-                        <img src="http://www.dpick.co.kr/wp-content/uploads/2016/07/339712_550.jpg">
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="itemPrice7"></td>
-  
-                    <td id="itemPrice8"></td>
-                </tr>
-            </table>
-        </div>
-        <div class="tabs-panel" id="panel2">
+    <div style="margin-bottom: 100px">
+        <ul class="list">
+            <li>
+                <button class="itemImage" data-buy="1">
+                    <p><img src="https://t1.daumcdn.net/cfile/tistory/2655CF47588AB4B437"></p>
+                    <p class="itemName1"></p>
+                    <p class="itemPrice1"></p>
+                </button>
+            </li>
+            <li>
+                <button class="itemImage" data-buy="2">
+                    <p><img src="http://lkphoto.co.kr/web/product/medium/201805/464_shop1_15266331153477.jpg"></p>
+                    <p class="itemName2"></p>
+                    <p class="itemPrice2"></p>
+                </button>
+            </li>
+            <li>
+                <button class="itemImage" data-buy="3">
+                    <p><img src="http://image.auction.co.kr/itemimage/da/51/3e/da513ec76.jpg"></p>
+                    <p class="itemName3"></p>
+                    <p class="itemPrice3"></p>
+                </button>
+            </li>
+            <li>
+                <button class="itemImage" data-buy="4">
+                    <p><img src="http://www.wansophone.com/cgi/item/post_data/BPDC017WH-1.jpg"></p>
+                    <p class="itemName4"></p>
+                    <p class="itemPrice4"></p>
+                </button>
+            </li>
+            <li>
+                <button class="itemImage" data-buy="5">
+                    <p><img src="https://mi0.rightinthebox.com/images/384x384/201710/nbhoza1508295332049.jpg"></p>
+                    <p class="itemName5"></p>
+                    <p class="itemPrice5"></p>
+                </button>
+            </li>
+            <li>
+                <button class="itemImage" data-buy="6">
+                    <p><img src="https://li3.rightinthebox.com/images/190x250/201611/hjlvzn1478942885586.jpg"></p>
+                    <p class="itemName6"></p>
+                    <p class="itemPrice6"></p>
+                </button>
+            </li>
+            <li>
+                <button class="itemImage" data-buy="7">
+                    <p><img src="http://www.54260967.com/upload/product/mimg3/IIBZ0000958m.jpg"></p>
+                    <p class="itemName7"></p>
+                    <p class="itemPrice7"></p>
+                </button>
+            </li>
+            <li>
+                <button class="itemImage" data-buy="8">
+                    <p><img src="http://www.dpick.co.kr/wp-content/uploads/2016/07/339712_550.jpg"></p>
+                    <p class="itemName8"></p>
+                    <p class="itemPrice8"></p>
+                </button>
+            </li>
+        </ul>
 
-
-
-
-
-        </div>
-        <div class="tabs-panel" id="panel3">
-
-
-
-
-
-        </div>
     </div>
     <footer>
         <div class="mobile-app-icon-bar">
@@ -140,6 +125,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/myInfo.js"></script>
 <script src="js/goodsList.js"></script>
+<script src="js/goodsListOne.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
 <script src="js/move.js"></script>
 <script>
