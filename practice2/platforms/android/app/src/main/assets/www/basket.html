@@ -21,10 +21,28 @@
 </head>
 
 <body>
-    <h2>장바구니</h2>
-    <div>
+    <header>
+        <h2 align="center">장바구니</h2>
+    </header>
+    <div align="right" style="padding-top: 10px; border-bottom: solid 1px">닉네임:<span id="my_id"></span>&nbsp;&nbsp;&nbsp;내 포인트:<span id="my_point_total"></span></div>
+    <div style="padding-top: 20px">
+        <button class="button">전체선택</button>
+    </div>
+    <div id="basket_table" style="border: 1px solid">
+        
+    </div>
+    <div align="right">
+        총 가격:<span id="totalPrice"></span>
+    </div>
+    <div align="right">
+        <button class="button" id="deleteAll">전체삭제</button>
+        <button class="button">선택삭제</button>
+    </div>
     
-    </div>   
+    <button class="button" style="width: 90%; font-size: 20px; padding: 10px 10px; display: block; margin: 0 auto;">
+      결제하기
+    </button>
+       
     <div id="mainRoom">
         <footer>
             <div class="mobile-app-icon-bar">
@@ -38,13 +56,25 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
-<script src="cordova.js"></script>
 <script src="js/backExit.js"></script>
-<script src="js/logout.js"></script>
 <script src="js/move.js"></script>
+<script src="js/myInfo.js"></script>
+<script src="js/basketList.js"></script>
 <script>
     $(document).foundation();
+</script>
 
+<script id="template-product" type="text/template">
+    <div style="height : 100px">
+        <input type="checkbox" name="basketList">
+        <img style="width: 100px; height: 100%; padding-bottom: 20px; display: inline" id="imageOrder" src="{{productImage}}">
+        <div style="display: inline; border-bottom:0px">
+            <span id="orderName">{{name}}</span>
+            <span id="orderPrice">{{price}}</span>
+            <span id="orderCount">{{count}}</span>
+        </div>
+    </div>
+    
 </script>
 
 </html>

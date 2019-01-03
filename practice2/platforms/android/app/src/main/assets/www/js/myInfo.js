@@ -14,6 +14,7 @@
                     $("#my_id").text(userObj.userId);
                     $("#my_point_total").text(userObj.pointTotal);
                     $("#my_left_chance").text(userObj.userLeftChance);
+                    $(".totalPoint").text(userObj.pointTotal);
                 }
             },
             error: function(request, status, error) {

@@ -6,7 +6,7 @@
     density="xxxhdpi"
     format="10"
     plugin-version="3.1.4"
-    timestamp="1546421220323"
+    timestamp="1546510448371"
     token="-5533572748982509166"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -29,7 +29,7 @@
 
     <build
         build-mode="FULL"
-        timestamp="1546421116991"
+        timestamp="1546509882488"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="D:\cordova\practice2\platforms\android\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
@@ -73,7 +73,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1546421220323"
+        timestamp="1546510448371"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="D:\cordova\practice2\platforms\android\app\build\intermediates\instant-run-apk\debug\app-debug.apk"

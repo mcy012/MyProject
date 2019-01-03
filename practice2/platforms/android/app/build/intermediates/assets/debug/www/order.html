@@ -18,7 +18,7 @@
         .info > input{
             display: inline;
         }
-        div>p{
+        div>span{
             padding-left: 10px;
         }
         .topic{
@@ -27,6 +27,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>QUIZ</header>
     <div style="text-align: center">
@@ -35,8 +36,8 @@
     <div class="topic">
         주문상품
     </div>
-    <div>
-        qqqq
+    <div id="charge_table">
+        
     </div>
     <div class="topic">
         주문자 정보
@@ -59,12 +60,12 @@
     </div>
     <div>
         <div style="border: 0px; padding-top: 10px">
-            <p style="padding-top: 10px; padding-right: 180px; display: inline">총 상품 가격</p>
-            <p style="display: inline" id="totalPrice"></p>
+            <span style="padding-top: 10px; padding-right: 180px">총 상품 가격</span>
+            <span id="totalPrice"></span>
         </div>
         <div style="border: 0px; padding-top: 10px; padding-bottom: 10px">
-            <p style="display: inline; padding-right: 164px;">총 결제 포인트</p>
-            <p style="display: inline"id="totalCharge"></p>
+            <span style="display: inline; padding-right: 164px;">총 결제 포인트</span>
+            <span id="totalCharge"></span>
         </div>
     </div>
     <div class="topic">
@@ -72,25 +73,37 @@
     </div>
     <div style="border-bottom: 0px">
         <div style="border: 0px; padding-top: 10px">
-            <p style="padding-top: 10px; padding-right: 183px; display: inline">전체 포인트</p>
-            <p style="display: inline" id="totalPoint"></p>
+            <span style="padding:10px 183px 0px 10px">전체 포인트</span>
+            <span class="totalPoint" align="right"></span>
         </div>
         <div style="border: 0px; padding-top: 10px; padding-bottom: 10px">
-            <p style="display: inline; padding-right: 130px;">사용 가능한 포인트</p>
-            <p style="display: inline"id="usePoint"></p>
+            <span style="padding:10px 130px 0px 10px">사용 가능한 포인트</span>
+            <span class="totalPoint" align="right"></span>
         </div>
-        <p style="display: inline; padding-right: 80px">사용할 포인트 입력</p>
+        <span style="padding-right: 80px">사용할 포인트 입력</span>
         <input type="number" style="display: inline; width: 30%">P
+    </div>
+    <div align="right" style="border-bottom: 0px; padding-bottom: 30px">
+        <input type="button" value="사용">
     </div>
     <button class="button" style="width: 90%; font-size: 20px; padding: 10px 10px">결제하기</button>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/foundationJS/foundation.min.js"></script>
+<script src="js/chargeList.js"></script>
+<script src="js/myInfo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
 <script>
     $(document).foundation();
-    $("#totalPrice").text("2000");
-    $("#totalCharge").text("2000");
-    $("#totalPoint").text("2000");
-    $("#usePoint").text("2000");
+
+</script>
+<script id="template-product" type="text/template">
+    <div style="height : 100px">
+        <img style="width: 100px; height: 100%; padding-bottom: 20px; display: inline" id="imageOrder" src="{{productImage}}">
+        <div style="display: inline; border-bottom:0px">
+            <span id="orderName">{{name}}</span>
+            <span id="orderPrice">{{price}}</span>
+            <span id="orderCount">{{count}}</span>
+        </div>
+    </div>
 </script>

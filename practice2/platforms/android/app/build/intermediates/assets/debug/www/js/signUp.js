@@ -2,7 +2,7 @@ $(document).ready(function() {
     $.support.cors = true;
 
     $('#back').click(function(){
-        location.href = "./index.html";
+        location.href = "login.html";
     });
 
 

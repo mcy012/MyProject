@@ -1,5 +1,5 @@
-$(document).ready(function(){
-    
+$(document).ready(function () {
+    /*
     $("#myInfo").click(function(){
 
         $.ajax({
@@ -42,5 +42,21 @@ $(document).ready(function(){
                 alert("error");
             }
         })
+    })
+    */
+    $("#myInfo").click(function () {
+        location.href = "./myInfo.html";
+    })
+
+    $("#goods").click(function () {
+        location.href = "./goods.html";
+    })
+
+    $("#main").click(function () {
+        location.href = "./mainRoom.html";
+    })
+
+    $("#basket").click(function () {
+        location.href = "./basket.html";
     })
 });

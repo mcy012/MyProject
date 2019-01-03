@@ -20,4 +20,12 @@
                 alert('물품정보를 가져오는데 실패하였습니다.');
             }
         });
+     
+     
+    $(".itemImage").click(function () {
+
+        var goodsSeq = $(this).data("buy");
+
+        location.href = "detail.html?seq=" + goodsSeq;
+    })
  });
