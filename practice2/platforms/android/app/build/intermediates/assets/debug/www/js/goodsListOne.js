@@ -25,7 +25,7 @@ $(document).ready(function () {
         location.href = "order.html";
 
         var nick = localStorage.getItem("nickname");
-        var name = $("#goodName").text();
+        var name = $(".goodName").text();
         var price = $("#goodPrice").text();
         var img = $("#image").attr("src");
         var count = $("#count").val();
@@ -58,7 +58,7 @@ $(document).ready(function () {
         location.href = "basket.html";
 
         var nick = localStorage.getItem("nickname");
-        var name = $("#goodName").text();
+        var name = $(".goodName").text();
         var price = $("#goodPrice").text();
         var img = $("#image").attr("src");
         var count = $("#count").val();

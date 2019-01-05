@@ -23,7 +23,6 @@
                  $('#charge_table').append(templateStr);
 
                  totalPrice += chargeObj.chargePrice;
-
              }
 
              $("#totalPrice").text(totalPrice);

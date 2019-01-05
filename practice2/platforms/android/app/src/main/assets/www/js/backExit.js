@@ -20,4 +20,4 @@ function onBackKeyDown(e){
     }
 };
 
-document.addEventListener("backbutton", onBackKeyDown, false);
+//document.addEventListener("backbutton", onBackKeyDown, false);

@@ -27,8 +27,11 @@
 
 <body>
     <div id="mainRoom">
-        <header>
-            <h2 id='myNick' align="right" style="font-weight: bold"></h2>
+        <header style="background-color: white">
+            <div align="right">
+            <span id='myNick' align="right" style="font-weight: bold"></span>
+            <span style="font-weight: 100">님, 반갑습니다.</span>
+            </div>
         </header>
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -37,13 +40,12 @@
                 <div class="swiper-slide start" id="game3" data-url="hardQuiz"><img src="img/hard.png"></div>
             </div>
         </div>
-
         <footer>
             <div class="mobile-app-icon-bar">
-                <button><i class="fa fa-gamepad" id="main" aria-hidden="true"></i></button>
-                <button><i class="fa fa-gift" id="goods" aria-hidden="true"></i></button>
-                <button><i class="fa fa-shopping-basket" id="basket" aria-hidden="true"></i></button>
-                <button><i class="fa fa-user-o" id="myInfo" aria-hidden="true"></i></button>
+                <button style="background"><i class="fa fa-gamepad" class="main" aria-hidden="true"></i></button>
+                <button><i class="fa fa-gift" class="goods" aria-hidden="true"></i></button>
+                <button><i class="fa fa-shopping-basket" class="basket" aria-hidden="true"></i></button>
+                <button><i class="fa fa-user-o" class="myInfo" aria-hidden="true"></i></button>
             </div>
         </footer>
     </div>
@@ -59,7 +61,7 @@
 
     var myNick = localStorage.getItem('nickname');
 
-    var templete = myNick + '님 반갑습니다.'
+    var templete = myNick
 
     $('#myNick').append(templete);
 </script>

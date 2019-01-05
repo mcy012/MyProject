@@ -15,31 +15,31 @@
         var inputPassword = $('#userPassword').val();
 
         if(inputId.length<1) {
-            alert("아이디를 입력하세요");
+            alert("아이디를 입력해주십시오");
             return;
         }
 
         if(inputPassword.length<1) {
-            alert("비밀번호를 입력하세요");
+            alert("비밀번호를 입력해주십시오");
             return;
         }
 
-        var jsonData = {userId:inputId, userPassword:inputPassword};
+        var jsonData = {'userId':inputId, 'userPassword':inputPassword};
 
         $.ajax({
             url: 'http://192.168.0.149:9000/login',
-            type: 'POST',
+            type: 'POST',  
             data: JSON.stringify(jsonData),
             contentType : "application/json; charset=UTF-8",
             success:function(response){
                 var userObj = response;
 
                 if(userObj.CNT == 1){
-                    location.href='mainRoom.html';
                     localStorage.setItem('nickname', inputId);
+                    location.href='./main.html';
                 }
                 else {
-                    alert('아이디나 비밀번호가 틀렸습니다.');
+                    alert('비밀번호/아이디를 확인해주세요.');
                     return;
                 }
             },

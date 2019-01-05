@@ -5,27 +5,36 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
     <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
     <title>광고퀴즈 로그인</title>
     <style>
         header {
                 padding-top: 200px;
+            }
+        .log-in-form {
+              border: 1px solid #cacaca;
+              padding: 1rem;
+              border-radius: 0;
             }
     </style>
 </head>
 
 <body>
     <div style="text-align:center">
-        <h1 style="padding-top: 50px"><strong>어플이름뭘로할까?</strong></h1>
+        <div style="padding-bottom: 30px">
+            <h1 style="padding-top: 30px padding-bottom: 50px"></h1>
+        </div>
         <img src="https://st.depositphotos.com/1005979/2976/i/950/depositphotos_29760945-stock-photo-quiz-red-3d-word-test.jpg" alt="왜안되냐" width="300" height="200" style="padding-bottom: 100px">
-        <p><input id="userId" type="text" placeholder="ID" value="" /></p>
-        <p><input id="userPassword" type="password" placeholder="Password" value="" /></p>
-
-        <button class="button" type="button" id="login">
-            로그인
-        </button>
-        <button class="button" type="button" id="signUp">
-            회원가입
-        </button>
+        <form class="log-in-form" onsubmit="return false;">
+            <label>아이디
+                <input type="text" placeholder=ID id="userId">
+            </label>
+            <label>비밀번호
+                <input type="password" placeholder="Password" id="userPassword">
+            </label>
+            <p><button class="button expanded shadow" id="login">로그인</button></p>
+            <p class="text-center" id="signUp">회원가입</p>
+        </form>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

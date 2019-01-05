@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0'>
+    <title>광고퀴즈 상품교환</title>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="css/bottom.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1 style="margin: 20px" align="center"><strong>QUIZ</strong></h1>
+    <header>
+        <div align="right">
+            <span style="font-weight: 100">안녕하세요. </span>
+            <span id='myNick' align="right" style="font-weight: bold"></span>
+            <span>님</span>
+        </div>
+    </header>
+    <div style="margin: 15px;">
+        <img src="https://st.depositphotos.com/1005979/2976/i/950/depositphotos_29760945-stock-photo-quiz-red-3d-word-test.jpg" style="width: 90%; margin-left: 5%; margin-right: 5% ">
+    </div>
+    <div style="margin-top: 50px">
+        <div style="text-align: center">
+            <span>
+                <button class="button move" id="mainRoom">광고 게임</button>
+                <button class="button move" id="goods">상품 리스트</button>
+            </span>
+        </div>
+        <div style="text-align: center">
+            <span>
+                <button class="button move" id="basket">나의 장바구니</button>
+                <button class="button move" id="myInfo">내 정보</button>
+            </span>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/myInfo.js"></script>
+<script src="js/goodsList.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script src="js/move.js"></script>
+<script>
+    $(document).foundation();
+    var myNick = localStorage.getItem('nickname');
+    var templete = myNick
+    $('#myNick').append(templete);
+</script>
+
+</html>

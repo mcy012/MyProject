@@ -6,6 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
     <title>내정보</title>
     <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
     <link href="css/bottom.css" rel="stylesheet">
     <style>
         .button {
@@ -36,8 +37,11 @@
     <div class="topic">
         주문상품
     </div>
+    <div >
+
+    </div>
     <div id="charge_table">
-        
+
     </div>
     <div class="topic">
         주문자 정보
@@ -49,11 +53,11 @@
     <div class="info" style="border: 0px">
         <span style="margin-left: 10px">전화번호</span>
         <input style="width: 40%; margin-left: 8px; margin-bottom: 10px" type="text">
-        <button class="button" style="width: 30%; display: inline; padding: 8px;">인증번호 발송</button>
+        <button class="button shadow" style="width: 30%; display: inline; padding: 8px;">인증번호 발송</button>
     </div>
     <div class="info">
-        <input style="width: 30%; margin-left: 85px;" type="text">
-        <button class="button" style="width: 13%; display: inline; padding: 8px;">인증</button>
+        <input style="width: 30%; margin-left: 97px;" type="text">
+        <button class="button shadow" style="width: 13%; display: inline; padding: 8px;">인증</button>
     </div>
     <div class="topic">
         결제 정보
@@ -86,7 +90,7 @@
     <div align="right" style="border-bottom: 0px; padding-bottom: 30px">
         <input type="button" value="사용">
     </div>
-    <button class="button" style="width: 90%; font-size: 20px; padding: 10px 10px">결제하기</button>
+    <button class="button shadow " style="width: 90%; font-size: 20px; padding: 10px 10px">선물하기</button>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/foundationJS/foundation.min.js"></script>
@@ -102,8 +106,9 @@
         <img style="width: 100px; height: 100%; padding-bottom: 20px; display: inline" id="imageOrder" src="{{productImage}}">
         <div style="display: inline; border-bottom:0px">
             <span id="orderName">{{name}}</span>
-            <span id="orderPrice">{{price}}</span>
-            <span id="orderCount">{{count}}</span>
+            <span id="orderPrice">{{price}}(P)</span>
+            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp
+            <span id="orderCount">{{count}}개</span>
         </div>
     </div>
 </script>

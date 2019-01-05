@@ -50,8 +50,25 @@
                      alert('삭제에 실패하였습니다.');
                  }
              });
-         } else{
+         } else {
              return;
          }
+     });
+
+     $("#chooseAll").click(function () {
+         if (check == 1) {
+             $(".checkbox").each(function () {
+                 $(this).attr("checked", false);
+                 check = 0;
+             })
+             
+         } else {
+             $(".checkbox").each(function () {
+                 $(this).attr("checked", true);
+                 check = 1;
+             })
+            
+         }
      })
+
  });

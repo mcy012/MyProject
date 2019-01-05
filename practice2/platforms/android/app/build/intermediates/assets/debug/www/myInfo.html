@@ -13,34 +13,49 @@
             width: 110px;
         }
 
+        th {
+            text-align: left;
+        }
+
     </style>
 </head>
 
 <body>
-    <h2 style="margin: 20px"><strong>내 정보</strong></h2>
-    <div align="right" style="padding: 20px">
+    <div align="center">
+        <h2 style="margin: 20px"><strong>마이 페이지</strong></h2>
     </div>
-    <table id="my_info_table" class="type02">
+    <div align="right" style="padding: 20px">
+        안녕하세요
+    </div>
+    <table id="my_info_table" class="type02 unstriped">
         <tr>
-            <th>아이디</th>
-            <td id="my_id"></td>
-        </tr>
-        <tr>
-            <th>포인트</th>
+            <th>잔여 포인트:</th>
             <td id="my_point_total"></td>
         </tr>
         <tr>
-            <th>남은 기회</th>
+            <th>오늘의 남은 기회:</th>
             <td id="my_left_chance"></td>
         </tr>
+        <tr>
+            <th>나의 게임 레벨:</th>
+            <td></td>
+        </tr>
     </table>
+    <ul class="vertical menu accordion-menu" data-accordion-menu>
+        <li>
+            <a href="#">구매 내역</a>
+            <ul class="menu vertical nested">
+                <li><a href="#">Item 1A</a></li>
+                <li><a href="#">Item 1B</a></li>
+            </ul>
+    </ul>
     <button class="button" id="logout">로그아웃</button>
     <footer>
         <div class="mobile-app-icon-bar">
-            <button><i class="fa fa-gamepad" id="main" aria-hidden="true"></i></button>
-            <button><i class="fa fa-gift" id="goods" aria-hidden="true"></i></button>
-            <button><i class="fa fa-shopping-basket" id="basket" aria-hidden="true"></i></button>
-            <button><i class="fa fa-user-o" id="myInfo" aria-hidden="true"></i></button>
+            <button><i class="fa fa-gamepad" class="main" aria-hidden="true"></i></button>
+            <button><i class="fa fa-gift" class="goods" aria-hidden="true"></i></button>
+            <button><i class="fa fa-shopping-basket" class="basket" aria-hidden="true"></i></button>
+            <button><i class="fa fa-user-o" class="myInfo" aria-hidden="true"></i></button>
         </div>
     </footer>
 </body>

@@ -44,19 +44,19 @@ $(document).ready(function () {
         })
     })
     */
-    $("#myInfo").click(function () {
+    $(".myInfo").click(function () {
         location.href = "./myInfo.html";
     })
 
-    $("#goods").click(function () {
+    $(".goods").click(function () {
         location.href = "./goods.html";
     })
 
-    $("#main").click(function () {
+    $(".mainRoom").click(function () {
         location.href = "./mainRoom.html";
     })
 
-    $("#basket").click(function () {
+    $(".basket").click(function () {
         location.href = "./basket.html";
     })
 });

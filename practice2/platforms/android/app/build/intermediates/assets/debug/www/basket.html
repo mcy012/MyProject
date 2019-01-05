@@ -6,6 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
     <link href="css/foundationCss/foundation.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
     <link href="css/bottom.css" rel="stylesheet">
     <style>
         header {
@@ -26,7 +27,7 @@
     </header>
     <div align="right" style="padding-top: 10px; border-bottom: solid 1px">닉네임:<span id="my_id"></span>&nbsp;&nbsp;&nbsp;내 포인트:<span id="my_point_total"></span></div>
     <div style="padding-top: 20px">
-        <button class="button">전체선택</button>
+        <button class="button shadow small" id="chooseAll">전체선택</button>
     </div>
     <div id="basket_table" style="border: 1px solid">
         
@@ -35,21 +36,21 @@
         총 가격:<span id="totalPrice"></span>
     </div>
     <div align="right">
-        <button class="button">전체삭제</button>
-        <button class="button">선택삭제</button>
+        <button class="button shadow small" id="deleteAll">전체삭제</button>
+        <button class="button shadow small">선택삭제</button>
     </div>
     
-    <button class="button" style="width: 90%; font-size: 20px; padding: 10px 10px; display: block; margin: 0 auto;">
-      결제하기
+    <button class="button shadow" style="width: 90%; font-size: 20px; padding: 10px 10px; display: block; margin: 0 auto;">
+      선물하기
     </button>
        
     <div id="mainRoom">
         <footer>
             <div class="mobile-app-icon-bar">
-                <button><i class="fa fa-gamepad" id="main" aria-hidden="true"></i></button>
-                <button><i class="fa fa-gift" id="goods" aria-hidden="true"></i></button>
-                <button><i class="fa fa-shopping-basket" id="basket" aria-hidden="true"></i></button>
-                <button><i class="fa fa-user-o" id="myInfo" aria-hidden="true"></i></button>
+                <button><i class="fa fa-gamepad" class="main" aria-hidden="true"></i></button>
+                <button><i class="fa fa-gift" class="goods" aria-hidden="true"></i></button>
+                <button><i class="fa fa-shopping-basket" class="basket" aria-hidden="true"></i></button>
+                <button><i class="fa fa-user-o" class="myInfo" aria-hidden="true"></i></button>
             </div>
         </footer>
     </div>
@@ -62,19 +63,23 @@
 <script src="js/basketList.js"></script>
 <script>
     $(document).foundation();
-
+    
+    var check = 1;
+    
 </script>
 
 <script id="template-product" type="text/template">
     <div style="height : 100px">
-        <input type="checkbox" name="basketList">
+        <input type="checkbox" name="basketList" checked class="checkbox">
         <img style="width: 100px; height: 100%; padding-bottom: 20px; display: inline" id="imageOrder" src="{{productImage}}">
         <div style="display: inline; border-bottom:0px">
             <span id="orderName">{{name}}</span>
-            <span id="orderPrice">{{price}}</span>
-            <span id="orderCount">{{count}}</span>
+            <span id="orderPrice">{{price}}(P)</span>
+            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp
+            <span id="orderCount">{{count}}개</span>
         </div>
     </div>
+    
 </script>
 
 </html>
