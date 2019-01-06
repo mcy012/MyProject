@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
+    <link rel="stylesheet" href="css/bottom.css">
+    <title>쉬운 게임</title>
+    <style>
+        article{
+            float: left;
+        }
+        
+        table{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>QUIZ</header>
+    <div>
+        <table class="type02 unstriped" id="table_point" border>
+            <tr>
+                <th rowspan="2">EASY-MAP<br>Level 1/50</th>
+                <th>내 포인트</th>
+                <td id="my_point_total"></td>
+            </tr>
+            <tr>
+                <th>남은 기회</th>
+                <td id="my_left_chance"></td>
+            </tr>
+        </table>
+    </div>
+    <p style="clear: both">&nbsp;</p>
+
+    <iframe width="360" height="315" src="https://www.youtube.com/embed/k0itCGsH5wQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+
+    <h3 id="question"></h3>
+    <fieldset class="fieldset">
+        <legend>정답?</legend><br>
+        <div class="grid-x grid-padding-x">
+            <fieldset class="large-5 cell">
+                <legend id="quiz">문제는여기에</legend><br>
+                <input type="radio" name="check" id="check1" value="qqq"><label for="check1" class="ans" id="ans1"></label><br>
+                <input type="radio" name="check" id="check2" value="www"><label for="check2" class="ans" id="ans2"></label><br>
+                <input type="radio" name="check" id="check3" value="www"><label for="check3" class="ans" id="ans3"></label><br>
+            </fieldset>
+        </div>
+        <button class='button rounded small bordered shadow' id='answerQue1'>답 제출</button><br>
+    </fieldset>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/myInfo.js"></script>
+<script src="js/answer1.js"></script>
+<script src="js/foundationJS/foundation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+
+</html>

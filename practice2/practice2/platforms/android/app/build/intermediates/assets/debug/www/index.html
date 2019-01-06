@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <title>광고퀴즈 로그인</title>
+    <style>
+        header {
+            padding-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--<div style="text-align:center">
+        <h1 style="padding-top: 50px"><strong>어플이름뭘로할까?</strong></h1>
+        <img src="https://st.depositphotos.com/1005979/2976/i/950/depositphotos_29760945-stock-photo-quiz-red-3d-word-test.jpg" alt="왜안되냐" width="300" height="200" style="padding-bottom: 100px">
+
+        <button class="button" type="button" id="start">
+            시작하기
+        </button>
+    </div>-->
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="cordova.js"></script>
+<script src="js/start.js"></script>
+<script type="text/javascript">
+    /** jQuery 화면 초기화 이벤트 */
+    $(function() {
+        /** phonegap 초기화 이벤트 */
+        // 이 이벤트가 발생했다는 것은 cordova의 초기화가 모두 완료되었다는 의미.
+        $(document).on('deviceready', function() {
+            // cordova의 초기화 완료 후 1초의 시간을 더 딜레이 시키고 인트로화면이 사라지게 한다.
+            // --> 인트로 화면이 너무 빨리 사라지는 것을 방지하기 위해서 1초의 딜레이를 적용함.
+            setTimeout(function() {
+                navigator.splashscreen.hide();
+                if(localStorage.getItem("nickname")==null){
+                    location.href="login.html";
+                } else{
+                    location.href="main.html";
+                }
+            }, 1000);
+        });
+    });
+</script>
+</html>

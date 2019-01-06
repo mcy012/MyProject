@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <title>내정보</title>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
+    <link href="css/bottom.css" rel="stylesheet">
+    <style>
+        .button {
+            display: block;
+            margin: 0 auto;
+        }
+        div{
+            border-bottom: 1px solid;
+        }
+        .info > input{
+            display: inline;
+        }
+        div>span{
+            padding-left: 10px;
+        }
+        .topic{
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>QUIZ</header>
+    <div style="text-align: center">
+        주문하기
+    </div>
+    <div class="topic">
+        주문상품
+    </div>
+    <div >
+
+    </div>
+    <div id="charge_table">
+
+    </div>
+    <div class="topic">
+        주문자 정보
+    </div>
+    <div class="info" style="border-bottom: 0px">
+        <span style="margin-left: 10px">이름</span>
+        <input style="width: 40%; margin: 10px 20px 10px 40px;" type="text">
+    </div>
+    <div class="info" style="border: 0px">
+        <span style="margin-left: 10px">전화번호</span>
+        <input style="width: 40%; margin-left: 8px; margin-bottom: 10px" type="text">
+        <button class="button shadow" style="width: 30%; display: inline; padding: 8px;">인증번호 발송</button>
+    </div>
+    <div class="info">
+        <input style="width: 30%; margin-left: 97px;" type="text">
+        <button class="button shadow" style="width: 13%; display: inline; padding: 8px;">인증</button>
+    </div>
+    <div class="topic">
+        결제 정보
+    </div>
+    <div>
+        <div style="border: 0px; padding-top: 10px">
+            <span style="padding-top: 10px; padding-right: 180px">총 상품 가격</span>
+            <span id="totalPrice"></span>
+        </div>
+        <div style="border: 0px; padding-top: 10px; padding-bottom: 10px">
+            <span style="display: inline; padding-right: 164px;">총 결제 포인트</span>
+            <span id="totalCharge"></span>
+        </div>
+    </div>
+    <div class="topic">
+        포인트 사용
+    </div>
+    <div style="border-bottom: 0px">
+        <div style="border: 0px; padding-top: 10px">
+            <span style="padding:10px 183px 0px 10px">전체 포인트</span>
+            <span class="totalPoint" align="right"></span>
+        </div>
+        <div style="border: 0px; padding-top: 10px; padding-bottom: 10px">
+            <span style="padding:10px 130px 0px 10px">사용 가능한 포인트</span>
+            <span class="totalPoint" align="right"></span>
+        </div>
+        <span style="padding-right: 80px">사용할 포인트 입력</span>
+        <input type="number" style="display: inline; width: 30%">P
+    </div>
+    <div align="right" style="border-bottom: 0px; padding-bottom: 30px">
+        <input type="button" value="사용">
+    </div>
+    <button class="button shadow " style="width: 90%; font-size: 20px; padding: 10px 10px">선물하기</button>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/foundationJS/foundation.min.js"></script>
+<script src="js/chargeList.js"></script>
+<script src="js/myInfo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+
+</script>
+<script id="template-product" type="text/template">
+    <div style="height : 100px">
+        <img style="width: 100px; height: 100%; padding-bottom: 20px; display: inline" id="imageOrder" src="{{productImage}}">
+        <div style="display: inline; border-bottom:0px">
+            <span id="orderName">{{name}}</span>
+            <span id="orderPrice">{{price}}(P)</span>
+            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp
+            <span id="orderCount">{{count}}개</span>
+        </div>
+    </div>
+</script>

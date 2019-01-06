@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <title>광고퀴즈 로그인</title>
+    <style>
+        header {
+            padding-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align:center">
+        <h1 style="padding-top: 50px"><strong>닉네임을 입력하세요.</strong></h1>
+  
+        <div style="width: 100%">
+            <div style="display: inline; float: left; width: 70%" >
+                <input id="nickname" type="text"/>
+            </div>
+            <div style="display: inline">
+                <button class="button" type="button" id="check">
+                    중복체크
+                </button>
+            </div>
+        </div>
+        <button class="button" type="button" id="pass">
+            확인
+        </button>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/login.js"></script>
+<script src="js/backExit.js"></script>
+<script src="js/signUp.js"></script>
+<script> var check = 0;</script>
+</html>

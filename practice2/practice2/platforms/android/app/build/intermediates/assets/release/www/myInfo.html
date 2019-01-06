@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <title>내정보</title>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <style>
+        .position-left{
+            width: 110px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-nav-bar title-bar">
+        <div class="title-bar-left">
+            <button type="button" class="menu-icon" data-toggle="offCanvasNestedOverlap">
+            </button>
+        </div>
+        <div class="title-bar-center">
+            <span class="title-bar-text">메뉴</span>
+        </div>
+        <div class="title-bar-right">
+            <button id="main"><img class="menu-icon" src="img/home.jpg"/></button>
+        </div>
+    </div>
+    <div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
+        <div class="callout">
+            <button class="button small" id="myInfo" type="button">내 정보</button>
+            <button class="button small" id="goods" type="button">상품교환</button>
+            <button class="button small" id="logout" type="button">로그아웃</button>
+        </div>
+    </div>
+    <h2 style="margin: 20px"><strong>내 정보</strong></h2>
+    <div align="right" style="padding: 20px">
+    </div>
+    <table id="my_info_table" class="type02">
+        <tr>
+            <th>이름</th>
+            <td id="my_name"></td>
+        </tr>
+        <tr>
+            <th>아이디</th>
+            <td id="my_id"></td>
+        </tr>
+        <tr>
+            <th>전화번호</th>
+            <td id="my_phone_number"></td>
+        </tr>
+        <tr>
+            <th>현재포인트</th>
+            <td id="my_point_total"></td>
+        </tr>
+        <tr>
+            <th>남은 기회</th>
+            <td id="my_left_chance"></td>
+        </tr>
+    </table>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/myInfo.js"></script>
+<script src="js/foundationJS/foundation.min.js"></script>
+<script src="js/move.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    document.querySelector('#logout').onclick = function() {
+        alert("로그아웃되었습니다.");
+        localStorage.clear();
+        location.href = "./index.html";
+    };
+
+</script>

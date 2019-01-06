@@ -52,7 +52,7 @@ $(document).ready(function () {
         location.href = "./goods.html";
     })
 
-    $(".mainRoom").click(function () {
+    $(".quizRoom").click(function () {
         location.href = "./mainRoom.html";
     })
 

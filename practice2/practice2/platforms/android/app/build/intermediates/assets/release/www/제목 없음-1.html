@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0'>
+    <title>회원가입</title>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+</head>
+
+<body>
+    <div class="title-bar">
+        <div class="title-bar-left">
+            <button type="button" class="menu-icon" data-toggle="offCanvasNestedOverlap">
+
+            </button>
+            <span class="title-bar-title">Foundation</span>
+        </div>
+        <div class="title-bar-right">
+            <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
+        </div>
+    </div>
+
+    
+    <div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
+        <div class="callout">I'm a nested off-canvas that uses overlap transition and the same position as the other nested off-canvas.</div>
+    </div>
+
+    <p>Enim, repudiandae officia dolores temporibus soluta, ipsa saepe tempora ipsum laudantium in mollitia quidem, nisi magni provident hic architecto rem culpa beatae.</p>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/signUp.js"></script>
+<script src="js/foundationJS/foundation.min.js"></script>
+<script src="js/foundationJS/foundation.core.js"></script>
+<script src="js/foundationJS/foundation.offcanvas.js"></script>
+<script>
+    $(document).ready(function() {
+        $(document).foundation();
+    })
+</script>
+
+</html>

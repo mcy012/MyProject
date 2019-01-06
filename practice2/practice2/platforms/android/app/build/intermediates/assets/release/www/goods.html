@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0'>
+    <title>광고퀴즈 상품교환</title>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <style>
+        #table_goods{
+            width:150px
+            font-size:small
+        }
+        img{
+            height: 150px;
+            width:150px;
+        }
+        .buy{
+            background-color: white;
+            border-radius: 0.375em;
+            border: 0;
+            box-shadow: inset 0 0 0 2px #f56a6a;
+            color: #f56a6a;
+            font-weight: 600;
+            height: 2.0em;
+            width: 70px;
+        }
+        .position-left{
+            width: 110px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-nav-bar title-bar">
+        <div class="title-bar-left">
+            <button type="button" class="menu-icon" data-toggle="offCanvasNestedOverlap">
+            </button>
+        </div>
+        <div class="title-bar-center">
+            <span class="title-bar-text">메뉴</span>
+        </div>
+        <div class="title-bar-right">
+            <button id="main"><img class="menu-icon" src="img/home.jpg"/></button>
+        </div>
+    </div>
+    <div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
+        <div class="callout">
+            <button class="button small" id="myInfo" type="button">내 정보</button>
+            <button class="button small" id="goods" type="button">상품교환</button>
+            <button class="button small" id="logout" type="button">로그아웃</button>
+        </div>
+    </div>
+    <h2 style="margin: 20px"><strong>상품 교환</strong></h2>
+    <div align="right" style="padding: 15px">
+        <table class="type02" id="table_point" border>
+            <tr>
+                <th colspan="3">아이디</th>
+                <th id="my_id"></th>
+                <th colspan="3">내 포인트</th>
+                <th id="my_point_total"></th>
+            </tr>
+        </table>
+    </div>
+    <table class="type02" id="table_goods" border>
+        <tr>
+            <th style="height: 150px; width:150px" colspan="2">
+                <img src="https://t1.daumcdn.net/cfile/tistory/2655CF47588AB4B437">
+            </th>
+            <th style="width: 150px" colspan="2">
+                <img src="http://lkphoto.co.kr/web/product/medium/201805/464_shop1_15266331153477.jpg">
+            </th>
+        </tr>
+        <tr>
+            <th id="item1"></th>
+            <th>
+                <button id="buy1" class="button small secondary" data-buy="1">구매</button>
+            </th>
+            <th id="item2"></th>
+            <th>
+                <button class="button small secondary" data-buy="2">구매</button>
+            </th>
+        </tr>
+        <tr>
+            <th style="width: 150px" colspan="2">
+                <img src="http://image.auction.co.kr/itemimage/da/51/3e/da513ec76.jpg">
+            </th>
+            <th style="height: 150px" colspan="2">
+                <img src="http://www.wansophone.com/cgi/item/post_data/BPDC017WH-1.jpg">
+            </th>
+        </tr>
+        <tr>
+            <th id="item3"></th>
+            <th>
+                <button class="button small secondary" data-buy="3">구매</button>
+            </th>
+            <th id="item4"></th>
+            <th>
+                <button class="button small secondary" data-buy="4">구매</button>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <img src="https://mi0.rightinthebox.com/images/384x384/201710/nbhoza1508295332049.jpg">
+            </th>
+            <th colspan="2">
+                <img src="https://li3.rightinthebox.com/images/190x250/201611/hjlvzn1478942885586.jpg">
+            </th>
+        </tr>
+        <tr>
+            <th id="item5"></th>
+            <th>
+                <button class="button small secondary" data-buy="5">구매</button>
+            </th>
+            <th id="item6"></th>
+            <th>
+                <button class="button small secondary" data-buy="6">구매</button>
+            </th>
+        </tr>
+        <tr>
+            <th style="height: 150px" colspan="2">
+                <img src="http://www.54260967.com/upload/product/mimg3/IIBZ0000958m.jpg">
+            </th>
+            <th colspan="2">
+                <img src="http://www.dpick.co.kr/wp-content/uploads/2016/07/339712_550.jpg">
+            </th>
+        </tr>
+        <tr>
+            <th id="item7"></th>
+            <th>
+                <button class="button small secondary" data-buy="7">구매</button>
+            </th>
+            <th id="item8"></th>
+            <th>
+                <button class="button small secondary" data-buy="8">구매</button>
+            </th>
+        </tr>
+    </table>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/goods.js"></script>
+<script src="js/goodsList.js"></script>
+<script src="js/goodsBuy.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script src="js/move.js"></script>
+<script>
+    $(document).foundation();
+    document.querySelector('#logout').onclick = function() {
+        alert("로그아웃되었습니다.");
+        localStorage.clear();
+        location.href = "./index.html";
+    };
+</script>
+
+</html>
