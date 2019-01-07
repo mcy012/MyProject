@@ -16,6 +16,7 @@
         img {
             height: 150px;
             width: 150px;
+            border-bottom: 1px solid;
         }
 
         .buy {
@@ -51,10 +52,6 @@
             font-family: sans-serif;
         }
 
-        img {
-            border-bottom: 1px solid
-        }
-
         .namePrice {
             padding-bottom: 10px;
             text-align: left;
@@ -63,130 +60,136 @@
         .namePrice>span {
             color: #f56a6a;
         }
-        
-        .name{
+
+        .name {
             text-align: left;
             margin-left: 10px;
         }
-        .name>p{
+
+        .name>p {
             margin-bottom: 10px;
         }
-        .namePrice > .price{
+
+        .namePrice>.price {
             margin-left: 10px;
         }
-        .list{
+
+        .list {
             width: 100%;
             margin-left: 10px;
         }
     </style>
 </head>
-<header style="background-color: white">
-    <h2 align="center">상품 리스트</h2>
+
+<header align="center" style="padding: 10px 0 10px 0 ; background-color: white">
+    <button id="goMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px; border-bottom: 0px"></button>
+    <div style="margin-top: 20px" class="logo">상품 리스트</div>
 </header>
 
 <body>
+
     <div align="right" style="padding: 15px">
     </div>
     <div style="margin-bottom: 100px">
-       <div style="margin: auto">
-        <ul class="list" >
-            <li>
-                <button class="itemImage" data-buy="1">
-                    <p><img src="https://t1.daumcdn.net/cfile/tistory/2655CF47588AB4B437"></p>
-                    <div class="name">
-                        <p class="itemName1"></p>
-                    </div>
-                    <div class="namePrice">
-                        <span class="itemPrice1 price"></span><span>P</span>
-                    </div>
-                </button>
-            </li>
-            <li>
-                <button class="itemImage" data-buy="2">
-                    <p><img src="http://lkphoto.co.kr/web/product/medium/201805/464_shop1_15266331153477.jpg"></p>
-                    <div class="name">
-                        <p class="itemName2"></p>
-                    </div>
-                    <div class="namePrice">
-                        <span class="itemPrice2 price"></span><span>P</span>
-                    </div>
-                </button>
-            </li>
-            <li>
-                <button class="itemImage" data-buy="3">
-                    <p><img src="http://image.auction.co.kr/itemimage/da/51/3e/da513ec76.jpg"></p>
-                    <div class="name">
-                        <p class="itemName3"></p>
-                    </div>
-                    <div class="namePrice">
-                        <span class="itemPrice3 price"></span><span>P</span>
-                    </div>
-                </button>
-            </li>
-            <li>
-                <button class="itemImage" data-buy="4">
-                    <p><img src="http://www.wansophone.com/cgi/item/post_data/BPDC017WH-1.jpg"></p>
-                    <div class="name">
-                        <p class="itemName4"></p>
-                    </div>
-                    <div class="namePrice">
-                        <span class="itemPrice4 price"></span><span>P</span>
-                    </div>
-                </button>
-            </li>
-            <li>
-                <button class="itemImage" data-buy="5">
-                    <p><img src="https://mi0.rightinthebox.com/images/384x384/201710/nbhoza1508295332049.jpg"></p>
-                    <div class="name">
-                        <p class="itemName5"></p>
-                    </div>
-                    <div class="namePrice">
-                        <span class="itemPrice5 price"></span><span>P</span>
-                    </div>
-                </button>
-            </li>
-            <li>
-                <button class="itemImage" data-buy="6">
-                    <p><img src="https://li3.rightinthebox.com/images/190x250/201611/hjlvzn1478942885586.jpg"></p>
-                    <div class="name">
-                        <p class="itemName6"></p>
-                    </div>
-                    <div class="namePrice">
-                        <span class="itemPrice6 price"></span><span>P</span>
-                    </div>
-                </button>
-            </li>
-            <li>
-                <button class="itemImage" data-buy="7">
-                    <p><img src="http://www.54260967.com/upload/product/mimg3/IIBZ0000958m.jpg"></p>
-                    <div class="name">
-                        <p class="itemName7"></p>
-                    </div>
-                    <div class="namePrice">
-                        <span class="itemPrice7 price"></span><span>P</span>
-                    </div>
-                </button>
-            </li>
-            <li>
-                <button class="itemImage" data-buy="8">
-                    <p><img src="http://www.dpick.co.kr/wp-content/uploads/2016/07/339712_550.jpg"></p>
-                    <div class="name">
-                        <p class="itemName8"></p>
-                    </div>
-                    <div class="namePrice">
-                        <span class="itemPrice8 price"></span><span>P</span>
-                    </div>
-                </button>
-            </li>
-        </ul>
+        <div style="margin: auto">
+            <ul class="list">
+                <li>
+                    <button class="itemImage" data-buy="1">
+                        <p><img src="http://img.danawa.com/prod_img/500000/107/815/img/3815107_1.jpg?shrink=500:500&_v=20180524155027"></p>
+                        <div class="name">
+                            <p class="itemName1"></p>
+                        </div>
+                        <div class="namePrice">
+                            <span class="itemPrice1 price"></span><span>P</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button class="itemImage" data-buy="2">
+                        <p><img src="http://bing.co.kr/upload/product/20171113N0OW4E.jpg"></p>
+                        <div class="name">
+                            <p class="itemName2"></p>
+                        </div>
+                        <div class="namePrice">
+                            <span class="itemPrice2 price"></span><span>P</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button class="itemImage" data-buy="3">
+                        <p><img src="https://www.lotteconf.co.kr/UpFile/Product/20180503132439986.png"></p>
+                        <div class="name">
+                            <p class="itemName3"></p>
+                        </div>
+                        <div class="namePrice">
+                            <span class="itemPrice3 price"></span><span>P</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button class="itemImage" data-buy="4">
+                        <p><img src="http://image.lottemart.com/lim/static_root/images/prodimg/88010/8801043035989_1_640.jpg"></p>
+                        <div class="name">
+                            <p class="itemName4"></p>
+                        </div>
+                        <div class="namePrice">
+                            <span class="itemPrice4 price"></span><span>P</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button class="itemImage" data-buy="5">
+                        <p><img src="http://img.danawa.com/prod_img/500000/488/561/img/5561488_1.jpg?shrink=500:500&_v=20171017171705"></p>
+                        <div class="name">
+                            <p class="itemName5"></p>
+                        </div>
+                        <div class="namePrice">
+                            <span class="itemPrice5 price"></span><span>P</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button class="itemImage" data-buy="6">
+                        <p><img src="http://img.danawa.com/prod_img/500000/763/788/img/1788763_1.jpg?shrink=500:500&_v=20180524111235"></p>
+                        <div class="name">
+                            <p class="itemName6"></p>
+                        </div>
+                        <div class="namePrice">
+                            <span class="itemPrice6 price"></span><span>P</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button class="itemImage" data-buy="7">
+                        <p><img src="http://gdimg.gmarket.co.kr/1344757330/still/600?ver=1523814659"></p>
+                        <div class="name">
+                            <p class="itemName7"></p>
+                        </div>
+                        <div class="namePrice">
+                            <span class="itemPrice7 price"></span><span>P</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button class="itemImage" data-buy="8">
+                        <p><img src="http://www.lotteconf.co.kr/UpFile/Product/20180511133427943.png"></p>
+                        <div class="name">
+                            <p class="itemName8"></p>
+                        </div>
+                        <div class="namePrice">
+                            <span class="itemPrice8 price"></span><span>P</span>
+                        </div>
+                    </button>
+                </li>
+            </ul>
         </div>
     </div>
     <footer>
         <div class="mobile-app-icon-bar">
             <button><i class="fa fa-gamepad quizRoom" aria-hidden="true"></i></button>
             <button style="border: 2px solid"><i class="fa fa-gift goods" aria-hidden="true"></i></button>
-            <button><i class="fa fa-shopping-basket basket" aria-hidden="true"></i></button>
             <button><i class="fa fa-user-o myInfo" aria-hidden="true"></i></button>
+            <button><i class="fa fa-sign-out logout" aria-hidden="true"></i></button>
         </div>
     </footer>
 </body>

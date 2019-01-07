@@ -10,26 +10,37 @@ $(document).ready(function () {
         var inputPhoneNumber = $('#userPhoneNumber').val();
 
         if (inputName.length < 1) {
-            alert("이름을 입력하십시오");
+            alert("이름을 입력하십시오.");
             return;
         }
         if (inputId.length < 1) {
-            alert("아이디를 입력하십시오");
+            alert("아이디를 입력하십시오.");
             return;
         }
         if (inputPassword.length < 1) {
-            alert("비밀번호를 입력하십시오");
+            alert("비밀번호를 입력하십시오.");
             return;
         }
         if (inputPassword2.length < 1) {
-            alert("비밀번호를 다시 확입하십시오");
+            alert("비밀번호를 다시 확입하십시오.");
             return;
         }
         if (inputPhoneNumber.length < 1) {
-            alert("휴대전화번호를 입력하십시오");
+            alert("휴대전화번호를 입력하십시오.");
             return;
         }
 
+        if ($('input:radio[name=sex]').is(':checked') == false) {
+            alert("성별을 선택하십시오.")
+            return;
+        }
+
+        if ($.isNumeric($("#year option:selected").val()) == false ||
+            $.isNumeric($("#month option:selected").val()) == false ||
+            $.isNumeric($("#day option:selected").val()) == false) {
+            alert("생년월일을 선택하십시오.");
+            return;
+        }
         var jsonData = {
             userName: inputName,
             userId: inputId,
@@ -51,7 +62,7 @@ $(document).ready(function () {
                 },
                 error: function (e) {
                     if (jsonData.userId == inputId) {
-                        alert("이미 등록된 아이디입니다.");
+                        alert("이미 사용 중인 아이디입니다.");
                     } else {
                         alert("db 서버 연결 오류");
                     }
@@ -110,8 +121,8 @@ $(document).ready(function () {
 
         return patt.test(password);
     }
-    
-    
+
+
     $('#userPassword2').blur(function (event) {
 
         var inputPassword = $('#userPassword1').val();
@@ -126,9 +137,19 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
-    
-    
 
-
+    $("#cerNum").click(function () {
+        if ($("#userPhoneNumber").val().length != 0) {
+            alert("인증 번호를 발송하였습니다.\n확인 후 입력바랍니다.");
+        } else if ($("#userPhoneNumber").val().length != 0) {
+            return;
+        }
+    });
+    
+    $("#cer").click(function(){
+        if($("#num").val().length == 0){
+            alert("발송된 인증번호를 입력하십시오.");
+        }
+    })
 
 });

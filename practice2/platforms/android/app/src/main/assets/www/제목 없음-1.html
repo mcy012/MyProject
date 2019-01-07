@@ -3,44 +3,110 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0'>
-    <title>광고퀴즈 상품교환</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <title>내정보</title>
     <link rel="stylesheet" href="css/foundationCss/foundation.css">
-    <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link href="css/bottom.css" rel="stylesheet">
+    <style>
+        .button {
+            display: inline;
+        }
+        .info > input{
+            display: inline;
+        }
+        div>p{
+            padding-left: 10px;
+        }
+        .money {
+            text-align: right;
+            padding-right: 0px;
+        }
+    </style>
 </head>
-<style>
-
-</style>
 
 <body>
+    <header style="padding: 8px 8px">
+        <span style="float: left"><button id="back"><i class="fa fa-long-arrow-left " aria-hidden="true"></i></button></span>
+        <span style="margin-right: 15px">상품 상세</span>
+        <br>
+        <p class="goodName" style="text-align: center; margin-bottom: 0px; margin-top: 10px; font-size: 15px"></p>
+    </header>
 
-    <div class="button-group align-center">
-        <button class="button" data-open="mobile-ios-modal-2">Alert</button>
+    <div style="width: 250px; height: 250px; margin: auto; padding-top: 20px; padding-bottom: 20px">
+        <img style="width: 250px; height: 250px; padding-bottom: 20px" id="image">
     </div>
-
-    <div class="reveal mobile-ios-modal" id="mobile-ios-modal-2" data-reveal>
-        <div class="mobile-ios-modal-inner">
-            <p>Your password does not match our records. Please re-enter your password.</p>
+    <div style="padding-top: 20px; padding-left: 10px; margin-bottom: 20px">
+        <p class="goodName" style="margin-bottom: 0px"></p>
+        <span id="goodPrice" style="padding-left: 10px"></span><span>(P)</span>
+    </div>
+    <div class="input-group plus-minus-input" style="width: 90%; margin: auto; margin-bottom: 20px">
+        <div class="input-group-button">
+            <button type="button" class="button hollow" data-quantity="minus" data-field="quantity" style="padding-top: 10px; padding-bottom: 10px">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
         </div>
-
-        <div class="mobile-ios-modal-options">
-            <button data-close class="button">Cancel</button>
-            <button class="button">Ok</button>
+        <input class="input-group-field" type="number" name="quantity" value="1" id="count">
+        <div class="input-group-button">
+            <button type="button" class="button hollow" data-quantity="plus" data-field="quantity" style="padding-top: 10px; padding-bottom: 10px">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
         </div>
+    </div>
+    <div align="right">
+        <span>총 금액</span>
+        <span class="totalPrice"></span><span>P</span>
+    </div>
+    <div align="center" style="padding-top: 50px">
+        <button class="button" id="basket">
+            장바구니
+        </button>
+        <button class="button" data-open="exampleModal1">
+            구매하기
+        </button>
+    </div>
+    <div class="reveal" id="exampleModal1" data-reveal style="width: 50%; height: 50px">
+        <h1>Awesome. I Have It.</h1>
+        <p class="lead">Your couch. It is mine.</p>
+        <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/foundationJS/foundation.min.js"></script>
+<script src="js/foundationJS/foundation.core.js"></script>
+<script src="js/foundationJS/foundation.reveal.js"></script>
+<script src="js/plmi.js"></script>
+<script src="js/myInfo.js"></script>
+<script src="js/goodsListOne.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
-<script src="js/move.js"></script>
 <script>
     $(document).foundation();
-    var myNick = localStorage.getItem('nickname');
-    var templete = myNick
-    $('#myNick').append(templete);
+    $(document).foundation('reveal', 'reflow');
+    
+    $("#back").click(function() {
+        location.href = "goods.html";
+    })
+
+    $("#choice").click(function() {
+        if (Number($("#my_point_total").val()) < Number($(".goodPrice").text())) {
+            alert("포인트가 부족합니다.");
+            return;
+        } else {
+            var gift = confirm("선물 하시겠습니까?");
+
+            if (gift) {
+                alert("선물상품 쿠폰이 전송되었습니다.");
+            } else {
+                return;
+            }
+        }
+    })
+
+    var to = (Number($("#my_point_total").text()) - Number($("#TOTO").text()));
+
+    $(".totalPrice").text(100000);
+
 </script>
-
-</html>
-
- 

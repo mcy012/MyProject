@@ -17,49 +17,30 @@
  * under the License.
  */
 var app = {
-        // Application Constructor
-        initialize: function () {
-            document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-        },
+    // Application Constructor
+    initialize: function() {
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+    },
 
-        // deviceready Event Handler
-        //
-        // Bind any cordova events here. Common events are:
-        // 'pause', 'resume', etc.
-        onDeviceReady: function () {
-            this.receivedEvent('deviceready');
-        },
+    // deviceready Event Handler
+    //
+    // Bind any cordova events here. Common events are:
+    // 'pause', 'resume', etc.
+    onDeviceReady: function() {
+        this.receivedEvent('deviceready');
+    },
 
-        // Update DOM on a Received Event
-        receivedEvent: function (id) {
-            var parentElement = document.getElementById(id);
-            var listeningElement = parentElement.querySelector('.listening');
-            var receivedElement = parentElement.querySelector('.received');
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
 
-            listeningElement.setAttribute('style', 'display:none;');
-            receivedElement.setAttribute('style', 'display:block;');
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
 
-            console.log('Received Event: ' + id);
+        console.log('Received Event: ' + id);
 
-            var backKeyPressedTime = 0;
+};
 
-            //하드웨어 Backbutton
-            document.addEventListener("backbutton", function () {
-
-                var currentTime = new Date().getTime();
-
-                if (currentTime > backKeyPressedTime + 2000) {
-                    backKeyPressedTime = new Date().getTime();
-                    toast.showShort("\'뒤로\'버튼을 한번 더 누르면 종료됩니다.");
-                    return false;
-                }
-                if (currentTime <= backKeyPressedTime + 2000) {
-                    toast.cancel();
-                    navigator.app.exitApp();
-                }
-
-            }, false);
-
-        };
-
-        app.initialize();
+app.initialize();

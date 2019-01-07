@@ -13,12 +13,7 @@
 
         var inputId = $('#userId').val();
 
-        if(inputId.length<1) {
-            alert("아이디를 입력하세요");
-            return;
-        }
-
-        var jsonData = {userId:inputId};
+        var jsonData = {userId:inputId, userPassword:inputId};
 
         $.ajax({
             url: 'http://192.168.0.149:9000/login',
@@ -29,10 +24,10 @@
                 var userObj = response;
 
                 if(userObj.CNT == 1){
-                    alert("중복된 아이디 입니다.");
+                    alert("이미 사용 중인 아이디입니다.");
                 }
                 else {
-                    alert("되는 아이디");
+                    alert("사용 가능한 아이디입니다.");
                     checkNum = 1;
                 }
             },

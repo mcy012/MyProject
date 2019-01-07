@@ -9,41 +9,109 @@
     <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
     <link href="css/bottom.css" rel="stylesheet">
     <style>
-        header {
-            border-bottom: solid 5px #f56a6a;
-            padding: 20px;
-        }
 
         .position-left {
             width: 110px;
         }
 
+        .plus-minus-input {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.plus-minus-input .input-group-field {
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+.plus-minus-input .input-group-field::-webkit-inner-spin-button,
+.plus-minus-input .input-group-field ::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.plus-minus-input .input-group-button .circle {
+  border-radius: 50%;
+  padding: 0.25em 0.8em;
+}
+
     </style>
 </head>
 
 <body>
-    <header>
-        <h2 align="center">장바구니</h2>
+    <header align="center" style="margin-top: 10px">
+        <button id="goMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px"></button>
     </header>
+    <p align="center" class="logo" style="border-bottom: 1px solid">장바구니</p>
+    <!--
     <div align="right" style="padding-top: 10px; border-bottom: solid 1px">닉네임:<span id="my_id"></span>&nbsp;&nbsp;&nbsp;내 포인트:<span id="my_point_total"></span></div>
-    <div style="padding-top: 20px">
+    -->
+    <div style="padding-top: 20px; margin-left: 10px">
         <button class="button shadow small" id="chooseAll">전체선택</button>
     </div>
     <div id="basket_table" style="border: 1px solid">
-        
+
     </div>
-    <div align="right">
-        총 가격:<span id="totalPrice"></span>
+    <div align="right" style="margin: 50px 10px 10px 0px;">
+        총 가격:<span class="totalPrice"></span><span>P</span>
     </div>
-    <div align="right">
+    <div align="right" style="margin-bottom: 50px; margin-right: 10px">
         <button class="button shadow small" id="deleteAll">전체삭제</button>
-        <button class="button shadow small">선택삭제</button>
+        <button class="button shadow small" id="deleteChoose">선택삭제</button>
     </div>
-    
-    <button class="button shadow" style="width: 90%; font-size: 20px; padding: 10px 10px; display: block; margin: 0 auto;">
-      선물하기
+
+    <button class="button shadow" style="width: 90%; font-size: 20px; padding: 10px 10px; display: block; margin: 0 auto; margin-bottom: 100px" data-open="mobile-ios-modal-2">
+        선물하기
     </button>
-       
+
+    <div class="reveal mobile-ios-modal" id="mobile-ios-modal-2" data-reveal>
+        <div class="mobile-ios-modal-inner">
+            <div style="width: 100%">
+                <p id="goodNamePopup" style="margin-top: 30px; font-weight: bolder"></p>
+                <table class="unstriped">
+                    <tr style="border-bottom: 1px solid">
+                        <td>
+                            가격
+                        </td>
+                        <td class="money totalPrice" id="TOTO">
+                        </td>
+                        <td style="padding-left: 0px">
+                            P
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            현재
+                        </td>
+                        <td id="my_point_total" class="money">
+                        </td>
+                        <td style="padding-left: 0px">
+                            P
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            잔여
+                        </td>
+                        <td class="money" id="total">
+                        </td>
+                        <td style="padding-left: 0px">
+                            P
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="mobile-ios-modal-options">
+            <button data-close class="button">취소</button>
+            <button class="button" id="choice">선택</button>
+        </div>
+    </div>
+
     <div id="mainRoom">
         <footer>
             <div class="mobile-app-icon-bar">
@@ -65,21 +133,35 @@
     $(document).foundation();
     
     var check = 1;
-    
 </script>
 
 <script id="template-product" type="text/template">
-    <div style="height : 100px">
-        <input type="checkbox" name="basketList" checked class="checkbox">
-        <img style="width: 100px; height: 100%; padding-bottom: 20px; display: inline" id="imageOrder" src="{{productImage}}">
-        <div style="display: inline; border-bottom:0px">
-            <span id="orderName">{{name}}</span>
-            <span id="orderPrice">{{price}}(P)</span>
-            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp
-            <span id="orderCount">{{count}}개</span>
-        </div>
-    </div>
-    
+    <div style="height : 100px; border-bottom:1px solid">
+        <table border="0px" class="unstriped">
+            <tr>
+                <td rowspan="2" style="width:5%"><input type="checkbox" name="basketList" checked class="checkbox"></td>
+                <td rowspan="2" style="width:30%"><img style="width: 100px; height: 80px; padding-bottom: 20px; display: inline" id="imageOrder" src="{{productImage}}"></td>
+                <td><span id="orderName">{{name}}</span></td>
+                <td rowspan="2" style="width:20%; padding:0px" ><span id="orderPrice">{{price}}(P)</span></td> 
+            </tr>
+                <td>
+                    <div class="input-group plus-minus-input" style="width: 90%; margin: auto; margin-bottom: 20px">
+                        <div class="input-group-button">
+                            <button type="button" class="button hollow" data-quantity="minus" data-field="quantity" style="padding-top: 10px; padding :0px">
+                                <i class="fa fa-minus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    <input class="input-group-field" type="number" name="quantity" value="{{count}}" id="orderCount">
+                    <div class="input-group-button">
+                        <button type="button" class="button hollow" data-quantity="plus" data-field="quantity" style="padding-top: 10px; padding:0px">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    </div>
+                </td>
+            </tr>
+        </table>        
+    <div>
 </script>
 
 </html>

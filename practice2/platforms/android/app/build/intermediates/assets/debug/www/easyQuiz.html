@@ -15,12 +15,19 @@
         table{
             text-align: center;
         }
+        .map > p {
+            margin-bottom: 1px;
+            font-weight: 100;
+            font-size: 12px;
+        }
     </style>
 </head>
 
 <body>
-    <header>QUIZ</header>
-    <div>
+    <header align="center" style="margin-top: 10px">
+        <button id="stopMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px"></button>
+    </header>
+    <div style="margin-top: 20px">
         <table class="type02 unstriped" id="table_point" border>
             <tr>
                 <th rowspan="2">EASY-MAP<br>Level 1/50</th>
@@ -34,12 +41,15 @@
         </table>
     </div>
     <p style="clear: both">&nbsp;</p>
-
     <iframe width="360" height="315" src="https://www.youtube.com/embed/k0itCGsH5wQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
-
+    <div class="map">
+        <p>* EASY_MAP의 문제 성공 : 20P지급</p>
+        <p>* MIDDLE_MAP 문제 성공 : 30p지급</p>
+        <p>* HIGH_MAP 문제 성공 : 50P지급 </p>
+    </div>
     <h3 id="question"></h3>
     <fieldset class="fieldset">
-        <legend>정답?</legend><br>
+        <legend>문제 01</legend><br>
         <div class="grid-x grid-padding-x">
             <fieldset class="large-5 cell">
                 <legend id="quiz">문제는여기에</legend><br>
@@ -54,8 +64,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/myInfo.js"></script>
 <script src="js/answer1.js"></script>
-<script src="js/foundationJS/foundation.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script src="js/move.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
 
 </html>

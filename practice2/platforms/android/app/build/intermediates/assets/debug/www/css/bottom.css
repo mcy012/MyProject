@@ -26,14 +26,6 @@
     max-width: 2rem;
 }
 
-header {
-    border-bottom: solid 5px #f56a6a;
-    padding: 20px;
-    height: 15%;
-    text-align: center;
-    font-size: 20px; 
-    font-family: sans-serif;
-}
 header>h2{
     font-weight: bolder;
 }
@@ -105,10 +97,11 @@ header>h2{
     font-weight: 400;
 }
 
+
 .mobile-ios-modal {
   width: 226px;
   min-height: 160px;
-  height: 300px;
+  height: 50%;
   margin: 0;
   padding: 0;
   border-radius: 0.75rem;
@@ -124,16 +117,6 @@ header>h2{
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .mobile-ios-modal-options {
@@ -153,15 +136,8 @@ header>h2{
   border-bottom: 0;
 }
 
-.mobile-ios-modal-options-stacked .button {
-  display: block;
-  width: 100%;
-  -webkit-flex: 1 0 0;
-      -ms-flex: 1 0 0px;
-          flex: 1 0 0;
-  margin-bottom: 0;
-  color: #1779ba;
-  background: transparent;
-  border-color: #e6e6e6;
-  border-bottom: 0;
+.logo {
+     margin-top: 20px;
+     font-size: 20px;
+            
 }

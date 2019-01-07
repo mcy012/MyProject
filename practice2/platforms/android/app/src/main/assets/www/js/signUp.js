@@ -32,12 +32,14 @@ $(document).ready(function () {
 
         if ($('input:radio[name=sex]').is(':checked') == false) {
             alert("성별을 선택하십시오.")
+            return;
         }
 
         if ($.isNumeric($("#year option:selected").val()) == false ||
             $.isNumeric($("#month option:selected").val()) == false ||
             $.isNumeric($("#day option:selected").val()) == false) {
-            alert("생년월일을 선택하십시오.")
+            alert("생년월일을 선택하십시오.");
+            return;
         }
         var jsonData = {
             userName: inputName,

@@ -59,4 +59,8 @@ $(document).ready(function () {
     $(".basket").click(function () {
         location.href = "./basket.html";
     })
+
+    $("#goMain").click(function () {
+        location.href = "main.html";
+    })
 });

@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     $('.start').click(function() {
 
-        var quizStart = confirm("기회를 한 번 사용합니다. 시작하시겠습니까?");
+        var quizStart = confirm("기회를 사용하시겠습니까?");
         
         if(quizStart == true){
             var url = $(this).data("url");
@@ -18,7 +18,7 @@ $(document).ready(function() {
                     var userObj = data;
 
                     if(userObj.userLeftChance < 1) {
-                        alert("기회가 없습니다.");
+                        alert("기회를 모두 사용하였습니다.");
                         return;
                     } else{
                         $.ajax({
@@ -44,8 +44,6 @@ $(document).ready(function() {
             return;
         }
     });
-    
-    
 });
 
 

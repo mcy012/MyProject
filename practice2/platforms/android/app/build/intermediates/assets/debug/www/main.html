@@ -12,14 +12,16 @@
 </head>
 
 <body>
-    <h1 style="margin: 20px" align="center"><strong>QUIZ</strong></h1>
-    <header>
-        <div align="right">
-            <span style="font-weight: 100">안녕하세요. </span>
-            <span id='myNick' align="right" style="font-weight: bold"></span>
-            <span>님</span>
-        </div>
+    <header align="center" style="margin-top: 10px">
+        <button id="goMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px"></button>
     </header>
+    
+    <div align="right" style="margin-top: 30px; border-bottom: 1px solid">
+        <span style="font-weight: 100" class="logo">안녕하세요. </span>
+        <span id='myNick' align="right" style="font-weight: bold" class="logo"></span>
+        <span class="logo">님</span>
+    </div>
+    
     <div style="margin: 15px;">
         <img src="https://st.depositphotos.com/1005979/2976/i/950/depositphotos_29760945-stock-photo-quiz-red-3d-word-test.jpg" style="width: 90%; margin-left: 5%; margin-right: 5% ">
     </div>
@@ -46,7 +48,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
 <script src="js/move.js"></script>
 <script src="js/backExit.js"></script>
-<script src="js/index.js"></script>
 <script>
     $(document).foundation();
     var myNick = localStorage.getItem('nickname');

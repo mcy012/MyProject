@@ -1,4 +1,4 @@
-#Thu Dec 27 17:41:45 KST 2018
-base.0=D\:\\cordova\\practice2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\22
+#Mon Jan 07 12:05:28 KST 2019
+base.0=C\:\\Users\\eda1707\\Downloads\\Project-master\\Project-master\\practice2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\6
 path.0=classes.dex
 renamed.0=classes.dex

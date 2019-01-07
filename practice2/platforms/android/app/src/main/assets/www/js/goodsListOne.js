@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $.support.cors = true;
-
+    
     var seq = $(location).attr('search').slice($(location).attr('search').indexOf('=') + 1);
 
     $.ajax({
@@ -12,7 +12,9 @@ $(document).ready(function () {
             var goodsObj = data;
 
             $("#image").attr("src", goodsObj.goodsImage);
-            $(".goodName").text(goodsObj.goodsName);
+            $("#goodName").text(goodsObj.goodsName);
+            $("#goodNameTop").text(goodsObj.goodsName);
+            $("#goodNamePopup").text(goodsObj.goodsName);
             $("#goodPrice").text(goodsObj.goodsPrice);
         },
 
@@ -25,7 +27,7 @@ $(document).ready(function () {
         location.href = "order.html";
 
         var nick = localStorage.getItem("nickname");
-        var name = $(".goodName").text();
+        var name = $("#goodName").text();
         var price = $("#goodPrice").text();
         var img = $("#image").attr("src");
         var count = $("#count").val();
@@ -58,7 +60,7 @@ $(document).ready(function () {
         location.href = "basket.html";
 
         var nick = localStorage.getItem("nickname");
-        var name = $(".goodName").text();
+        var name = $("#goodName").text();
         var price = $("#goodPrice").text();
         var img = $("#image").attr("src");
         var count = $("#count").val();
@@ -83,4 +85,13 @@ $(document).ready(function () {
             }
         })
     })
+    
+    $("#gift").click(function(){
+        
+        var to = Number($("#my_point_total").text());
+        var pr = Number($("#TOTO").text());
+    
+        $("#leftPoint").text(to-pr);
+    });
+
 });
