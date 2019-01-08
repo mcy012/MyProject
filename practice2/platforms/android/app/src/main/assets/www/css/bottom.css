@@ -16,6 +16,7 @@
 
 .mobile-app-icon-bar button {
     padding: 1.25rem;
+    width: 25%
 }
 
 .mobile-app-icon-bar button svg,

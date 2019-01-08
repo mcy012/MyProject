@@ -45,19 +45,19 @@ $(document).ready(function () {
     })
     */
     $(".myInfo").click(function () {
-        location.href = "./myInfo.html";
+        location.href = "myInfo.html";
     })
 
     $(".goods").click(function () {
-        location.href = "./goods.html";
+        location.href = "goods.html";
     })
 
     $(".quizRoom").click(function () {
-        location.href = "./mainRoom.html";
+        location.href = "mainRoom.html";
     })
 
-    $(".basket").click(function () {
-        location.href = "./basket.html";
+    $(".event").click(function () {
+        location.href = "event.html";
     })
 
     $("#goMain").click(function () {

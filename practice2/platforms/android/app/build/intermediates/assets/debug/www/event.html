@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>광고퀴즈</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <link href="css/foundationCss/foundation.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
+    <link href="css/bottom.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header align="center" style="margin-top: 10px">
+        <button id="goMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px"></button>
+    </header>
+    <p align="center" class="logo" style="border-bottom: 1px solid">장바구니</p>
+
+    <div id="mainRoom">
+        <footer>
+            <div class="mobile-app-icon-bar">
+                <button><img src="img/icons8-game-controller-filled-50.png" class="quizRoom"></button>
+                <button><img src="img/icons8-wedding-gift-50.png" class="goods"></button>
+                <button style="background-color: #d1d1d1"><img src="img/icons8-christmas-star-50.png"></button>
+                <button><img src="img/icons8-more-info-50.png" class="myInfo"></button>
+            </div>
+        </footer>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script src="cordova.js"></script>
+<script src="js/backExit.js"></script>
+<script src="js/move.js"></script>
+<script src="js/myInfo.js"></script>
+<script>
+    $(document).foundation();
+    
+    var check = 1;
+</script>
+
+</html>
