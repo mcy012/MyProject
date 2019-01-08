@@ -44,7 +44,7 @@
                 }
             },
             error: function(request, status, error) {
-                alert('아니왜안되냐고ㅡㅡ');
+                alert('로그인 데이터 베이스 서버 오류');
             }
         });
     });

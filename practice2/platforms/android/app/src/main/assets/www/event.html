@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>광고퀴즈</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <link href="css/foundationCss/foundation.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
+    <link href="css/bottom.css" rel="stylesheet">
+    <style>
+
+        .position-left {
+            width: 110px;
+        }
+
+        .plus-minus-input {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.plus-minus-input .input-group-field {
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+.plus-minus-input .input-group-field::-webkit-inner-spin-button,
+.plus-minus-input .input-group-field ::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.plus-minus-input .input-group-button .circle {
+  border-radius: 50%;
+  padding: 0.25em 0.8em;
+}
+
+    </style>
+</head>
+
+<body>
+    <header align="center" style="margin-top: 10px">
+        <button id="goMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px"></button>
+    </header>
+    <p align="center" class="logo" style="border-bottom: 1px solid">장바구니</p>
+
+    <div id="mainRoom">
+        <footer>
+            <div class="mobile-app-icon-bar">
+                <button><i class="fa fa-gamepad quizRoom" aria-hidden="true"></i></button>
+                <button><i class="fa fa-gift goods" aria-hidden="true"></i></button>
+                <button style="border: 2px solid"><i class="fa fa-shopping-basket event" aria-hidden="true"></i></button>
+                <button><i class="fa fa-user-o myInfo" aria-hidden="true"></i></button>
+            </div>
+        </footer>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script src="js/backExit.js"></script>
+<script src="js/move.js"></script>
+<script src="js/myInfo.js"></script>
+<script>
+    $(document).foundation();
+    
+    var check = 1;
+</script>
+
+</html>

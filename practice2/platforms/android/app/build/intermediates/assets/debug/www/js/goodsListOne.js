@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $.support.cors = true;
-    
+
     var seq = $(location).attr('search').slice($(location).attr('search').indexOf('=') + 1);
 
     $.ajax({
@@ -12,10 +12,21 @@ $(document).ready(function () {
             var goodsObj = data;
 
             $("#image").attr("src", goodsObj.goodsImage);
-            $("#goodName").text(goodsObj.goodsName);
-            $("#goodNameTop").text(goodsObj.goodsName);
-            $("#goodNamePopup").text(goodsObj.goodsName);
+            $(".goodName").text(goodsObj.goodsName);
             $("#goodPrice").text(goodsObj.goodsPrice);
+
+
+            var allPrice = $("#goodPrice").text() * $("#count").val();
+
+            $(".totalPrice").text(allPrice);
+
+            $(".upDown").click(function () {
+                var allPrice = $("#goodPrice").text() * $("#count").val();
+
+                $(".totalPrice").text(allPrice);
+
+                $("#change").load("gogogo.html");
+            })
         },
 
         error: function (request, status, error) {
@@ -23,6 +34,7 @@ $(document).ready(function () {
         }
     });
 
+    /*
     $("#buy").click(function () {
         location.href = "order.html";
 
@@ -85,13 +97,28 @@ $(document).ready(function () {
             }
         })
     })
-    
-    $("#gift").click(function(){
-        
+ */
+    $("#gift").click(function () {
+
         var to = Number($("#my_point_total").text());
         var pr = Number($("#TOTO").text());
-    
-        $("#leftPoint").text(to-pr);
+
+        $("#leftPoint").text(to - pr);
     });
 
+    $("#choice").click(function () {
+        if (Number($("#leftPoint").text()) < 0) {
+            alert("포인트가 부족합니다.");
+            return;
+        } else {
+            var gift = confirm("선물 하시겠습니까?");
+
+            if (gift) {
+                alert("선물상품 쿠폰이 전송되었습니다.");
+                location.href = "goods.html";
+            } else {
+                return;
+            }
+        }
+    });
 });

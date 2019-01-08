@@ -13,10 +13,10 @@
 
         var inputId = $('#userId').val();
 
-        var jsonData = {userId:inputId, userPassword:inputId};
+        var jsonData = {userId:inputId};
 
         $.ajax({
-            url: 'http://192.168.0.149:9000/login',
+            url: 'http://192.168.0.149:9000/userCheck',
             type: 'POST',
             data: JSON.stringify(jsonData),
             contentType : "application/json; charset=UTF-8",

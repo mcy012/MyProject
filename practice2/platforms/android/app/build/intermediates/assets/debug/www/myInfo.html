@@ -45,14 +45,14 @@
             <th>잔여 포인트:</th>
             <td id="my_point_total" style="text-align: right"></td>
             <td>
-            <span>P</span>
+                <span>P</span>
             </td>
         </tr>
         <tr>
             <th>오늘의 남은 기회:</th>
             <td id="my_left_chance" style="text-align: right"></td>
             <td>
-            <span>회</span>
+                <span>회</span>
             </td>
         </tr>
         <tr>
@@ -105,14 +105,12 @@
             </ul>
         </li>
     </ul>
-
-    <button class="button" id="logout">로그아웃</button>
     <footer>
         <div class="mobile-app-icon-bar">
             <button><i class="fa fa-gamepad quizRoom" aria-hidden="true"></i></button>
             <button><i class="fa fa-gift goods" aria-hidden="true"></i></button>
-            <button><i class="fa fa-shopping-basket basket" aria-hidden="true"></i></button>
             <button style="border: 2px solid"><i class="fa fa-user-o myInfo" aria-hidden="true"></i></button>
+            <button><i class="fa fa-sign-out logout" aria-hidden="true"></i></button>
         </div>
     </footer>
 </body>
@@ -120,11 +118,11 @@
 <script src="js/myInfo.js"></script>
 <script src="js/foundationJS/foundation.min.js"></script>
 <script src="js/move.js"></script>
-<script src="js/logout.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
 <script>
     $(document).foundation();
     var myNick = localStorage.getItem('nickname');
     var templete = myNick
     $('#myNick').append(templete);
+
 </script>

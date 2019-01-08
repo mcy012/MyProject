@@ -97,11 +97,17 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
+    
+    $("#userId").focus(function (){
+        $("#errMsg_01").hide();
+    });
+
     var chkValId = function (id) {
         var patt = new RegExp(/^.*(?=.{6,15})(?=.*[0-9])(?=.*[a-z]).*$/);
 
         return patt.test(id);
     }
+    
 
     $('#userPassword1').blur(function (event) {
 
@@ -116,6 +122,13 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
+    
+    
+    $("#userPassword1").focus(function (){
+        $("#errMsg_02").hide();
+    });
+    
+    
     var chkValId = function (password) {
         var patt = new RegExp(/^.*(?=.{6,15})(?=.*[0-9])(?=.*[a-z]).*$/);
 

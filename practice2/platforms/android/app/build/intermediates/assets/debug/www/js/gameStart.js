@@ -2,13 +2,13 @@ $(document).ready(function() {
 
     $.support.cors = true;
 
-    var myId = localStorage.getItem("id");
+    var myId = localStorage.getItem("nickname");
 
     $('.start').click(function() {
 
         var quizStart = confirm("기회를 사용하시겠습니까?");
         
-        if(quizStart == true){
+        if(quizStart){
             var url = $(this).data("url");
         
             $.ajax({

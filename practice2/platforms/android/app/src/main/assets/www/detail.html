@@ -30,38 +30,35 @@
         <span style="float: left"><button id="back"><i class="fa fa-long-arrow-left " aria-hidden="true"></i></button></span>
         <span style="margin-left: 115px" class="logo">상품 상세</span>
         <br>
-        <p id="goodNameTop" style="text-align: center; margin-bottom: 0px; margin-top: 10px; font-size: 15px"></p>
+        <p class="goodName" style="text-align: center; margin-bottom: 0px; margin-top: 10px; font-size: 15px"></p>
     </header>
 
     <div style="width: 250px; height: 250px; margin: auto; padding-top: 20px; padding-bottom: 20px">
         <img style="width: 250px; height: 250px; padding-bottom: 20px" id="image">
     </div>
     <div style="padding-top: 20px; padding-left: 10px; margin-bottom: 20px">
-        <p id="goodName" style="margin-bottom: 0px"></p>
+        <p class="goodName" style="margin-bottom: 0px"></p>
         <span id="goodPrice" style="padding-left: 10px"></span><span>(P)</span>
     </div>
     <div class="input-group plus-minus-input" style="width: 90%; margin: auto; margin-bottom: 20px">
         <div class="input-group-button">
-            <button type="button" class="button hollow" data-quantity="minus" data-field="quantity" style="padding-top: 10px; padding-bottom: 10px">
+            <button type="button" class="button hollow upDown" data-quantity="minus" data-field="quantity" style="padding-top: 10px; padding-bottom: 10px">
                 <i class="fa fa-minus" aria-hidden="true"></i>
             </button>
         </div>
         <input class="input-group-field" type="number" name="quantity" value="1" id="count">
         <div class="input-group-button">
-            <button type="button" class="button hollow" data-quantity="plus" data-field="quantity" style="padding-top: 10px; padding-bottom: 10px">
+            <button type="button" class="button hollow upDown" data-quantity="plus" data-field="quantity" style="padding-top: 10px; padding-bottom: 10px">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
         </div>
     </div>
-    <div align="right">
+    <div align="right" id="change">
         <span>총 금액</span>
         <span class="totalPrice"></span><span>P</span>
     </div>
     <div align="center" style="padding-top: 50px">
-        <button class="button" id="basket">
-            장바구니
-        </button>
-        <button class="button" data-open="mobile-ios-modal-2" id="gift">
+        <button class="button shadow" data-open="mobile-ios-modal-2" id="gift">
             선물하기
         </button>
     </div>
@@ -69,7 +66,7 @@
     <div class="reveal mobile-ios-modal" id="mobile-ios-modal-2" data-reveal>
         <div class="mobile-ios-modal-inner">
             <div style="width: 100%"> 
-                <p id="goodNamePopup" style="margin-top: 30px; font-weight: bolder"></p>
+                <p class="goodName" id="buyName" style="margin-top: 30px; font-weight: bolder"></p>
                 <table class="unstriped" >
                     <tr style="border-bottom: 1px solid">
                         <td>
@@ -122,23 +119,5 @@
     $("#back").click(function(){
         location.href = "goods.html";
     })
-    
-    $("#choice").click(function(){
-        if(Number($("#my_point_total").text()) < Number($("#goodPrice").text()) == true) {
-            alert("포인트가 부족합니다.");
-            return;
-        } else{
-            var gift = confirm("선물 하시겠습니까?");
-            
-            if(gift){
-                alert("선물상품 쿠폰이 전송되었습니다.");
-                location.href = "goods.html";
-            } else{
-                return;
-            }
-        }
-    })
-    
-    $(".totalPrice").text(2000);
     
 </script>
