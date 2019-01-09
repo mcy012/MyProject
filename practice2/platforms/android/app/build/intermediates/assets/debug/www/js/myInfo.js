@@ -27,7 +27,7 @@
          type: 'GET',
          success: function (data) {
 
-             for (var index = 0; index < data.length; index++) {
+             for (var index = 0; index < 5; index++) {
 
                  var buyObj = data[index];
 

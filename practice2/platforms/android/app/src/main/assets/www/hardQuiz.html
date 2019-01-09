@@ -6,47 +6,49 @@
     <link rel="stylesheet" href="css/foundationCss/foundation.css">
     <title>어려운 게임</title>
     <style>
-        article{
-            float: left;
+        table{
+            text-align: center;
+        }
+        .map > p {
+            margin-bottom: 1px;
+            font-weight: 100;
+            font-size: 12px;
         }
     </style>
 </head>
 
 <body>
-    <div class="mobile-nav-bar title-bar">
-        <div class="title-bar-left">
-        </div>
-        <div class="title-bar-center">
-            <span class="title-bar-text">메뉴</span>
-        </div>
-        <div class="title-bar-right">
-        </div>
-    </div>  
-   
-    <article>
-    <h2 style="margin: 20px"><strong>난이도 3</strong></h2>
-    </article>
-    <div style="float:right">
-        <table class="type02" id="table_point" border style="width: 200px; height: 20px">
+    <header align="center" style="margin-top: 10px">
+        <button id="stopMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px"></button>
+    </header>
+    <div style="margin-top: 20px">
+        <table class="type02 unstriped" id="table_point" border>
             <tr>
+                <th rowspan="2">HARD-MAP<br>Level 1/50</th>
                 <th>내 포인트</th>
-                <th id="my_point_total"></th>
+                <td id="my_point_total"></td>
             </tr>
             <tr>
                 <th>남은 기회</th>
-                <th id="my_left_chance"></th>
+                <td id="my_left_chance"></td>
             </tr>
         </table>
     </div>
-    <p style="clear: both">&nbsp;</p>
+    
+    <p style="clear: both"></p>
     
     <div id="video">  
     <iframe width="360" height="315" src="https://www.youtube.com/embed/k0itCGsH5wQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>   </iframe>
     </div>
     <div id="hard">
-        <h3 id="question2"></h3>
-        <input type="text" style="width = 100px" placeholder="정답을 입력하세요." id="answer2" />
-        <button class='button small' id='submit2'>답 제출</button><br>
+    <fieldset class="fieldset">
+        <legend>정답?</legend>
+        <div>
+            <h3 id="question2"></h3>
+            <input type="text" style="width = 100px" placeholder="정답을 입력하세요." id="answer2" />
+            <button class='button rounded small bordered shadow' id='submit2' data-score=50>답 제출</button><br>
+        </div>
+    </fieldset>
     </div>
     <div>
         <button class="button" id="go" onclick=visible()>문제풀기</button>
@@ -63,6 +65,15 @@
         $("#go").hide();
     }
     
+    $("#stopMain").click(function () {
+        var real = confirm("나가시면 사용된 기회가 사라집니다.\n그래도 나가시겠습니까?");
+
+        if (real) {
+            location.href = "main.html";
+        } else {
+            return;
+        }
+    })
 </script>
 
 </html>

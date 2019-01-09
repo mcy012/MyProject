@@ -6,10 +6,56 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
     <link href="css/foundationCss/foundation.css" rel="stylesheet">
     <link rel="stylesheet" href="css/foundationCss/foundation-prototype.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/css/swiper.min.css">
     <link href="css/bottom.css" rel="stylesheet">
 
     <style>
+        .swiper-container {
+            height: 400px;
+            width: 90%;
+            padding-top: 0px;
+            border: thin solid;
+        }
 
+        .swiper-slide>img {
+            width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            border: 1px solid
+        }
+
+        .swiper-pagination-bullet {
+            margin-right: 10px
+        }
+
+        #event1 {
+            text-align: center;
+            font-size: 20px;
+      
+            font-weight: bolder;
+        }
+
+        #event2 {
+            text-align: center;
+            font-size: 20px;
+            padding: 5px 0 5px 0;
+        }
+
+        #event3 {
+            text-align: center;
+            font-size: 20px;
+        
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        span {
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -18,9 +64,35 @@
         <button id="goMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px"></button>
     </header>
     <p align="center" class="logo" style="border-bottom: 1px solid">이벤트/기획</p>
-    <div id="test">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" onclick="location.href = 'eventQuiz.html'">
+                <div id="event1">카누문제를 맞추면<br>카누선물이 팡팡!</div>
+                <img src="img/event1.png">
+            </div>
+            <div class="swiper-slide" style="background-color: #eeeeee">
 
+                <div id="event2" onclick="location.href = 'easyQuiz.html'">
+                    2019년 01월 10일 ~ <br>2019년 2월 28일<br><br>
+                    <p>세벳돈처럼 쏟.아.지.는 포인트</p><br>
+                    연속해서 3문제를 맞추면<br>
+                    해당하는 MAP의 포인트 x 2!!<br><br>
+
+                    Point To Point<br>
+                    <p style="font-size: 50px">Point X 2</p>
+                </div>
+
+            </div>
+            <div class="swiper-slide">
+                <div id="event3"><span>오늘이 마지막 !</span>(은 아니지만)<br>
+                    광고를 보면 나의 기회가<br>
+                    부활 되는 거 실화?</div>
+                <img src="img/event3.png">
+            </div>
+        </div>
     </div>
+    <div class="swiper-pagination" style="position: relative"></div>
+
 
     <div id="mainRoom">
         <footer>
@@ -35,17 +107,30 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
 <script src="cordova.js"></script>
 <script src="js/backExit.js"></script>
 <script src="js/move.js"></script>
-<script src="js/myInfo.js"></script>
 <script>
     $(document).foundation();
-
-    var check = 1;
 </script>
 <script>
-
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 500,
+        centeredSlides: true,
+        loop: true,
+        /*
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },*/
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 </script>
 
 </html>
