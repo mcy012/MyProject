@@ -75,4 +75,21 @@ $(document).ready(function () {
         }
     });
 
+    $("#close").click(function () {
+
+        var myId = localStorage.getItem("nickname")
+        
+        $.ajax({
+            type: 'PUT',
+            url: 'http://192.168.0.149:9000/chancePlus/' + myId + '',
+            success: function (data) {
+                alert("남은 기회가 증가하였습니다.");
+            },
+
+            error: function (request, status, error) {
+                alert("error");
+            }
+        })
+    })
+
 });

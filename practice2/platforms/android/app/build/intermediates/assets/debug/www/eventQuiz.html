@@ -40,27 +40,21 @@
             </tr>
         </table>
     </div>
-    <p style="clear: both">&nbsp;</p>
-    <!--
-    <iframe width="360" height="315" src="https://www.youtube.com/embed/k0itCGsH5wQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
-    -->
+    <p style="clear: both"></p>
+
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/CW-5DnoLhAE?controls=0" frameborder="0" allowfullscreen  allow="autoplay; encrypted-media"> </iframe>
+
     <div class="map">
-        <p>* EASY_MAP의 문제 성공 : 20P지급</p>
-        <p>* MIDDLE_MAP 문제 성공 : 30p지급</p>
-        <p>* HIGH_MAP 문제 성공 : 50P지급 </p>
+        <p>* EVENT_MAP의 문제 성공 : 해당 상품 지급</p>
     </div>
     <h3 id="question"></h3>
     <fieldset class="fieldset">
         <legend>문제</legend><br>
         <div class="grid-x grid-padding-x">
-            <fieldset class="large-5 cell">
-                <legend id="quiz"></legend><br>
-                <input type="radio" name="check" id="check1" value="qqq"><label for="check1" class="ans" id="ans1"></label><br>
-                <input type="radio" name="check" id="check2" value="www"><label for="check2" class="ans" id="ans2"></label><br>
-                <input type="radio" name="check" id="check3" value="www"><label for="check3" class="ans" id="ans3"></label><br>
-            </fieldset>
+            <h4>다음 광고 속의 남자 주인공의 이름은?</h4>
+            <input type="text" style="width = 100px" placeholder="정답을 입력하세요." id="answerEvent" />
+            <button class='button rounded small bordered shadow' id='submitEvent' data-score=50>답 제출</button><br>
         </div>
-        <button class='button rounded small bordered shadow' id='answerQue1'>답 제출</button><br>
     </fieldset>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -69,6 +63,7 @@
 <script src="js/move.js"></script>
 <script src="cordova.js"></script>
 <script src="js/backQuiz.js"></script>
+<script src="js/answerEvent.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
 
 </html>

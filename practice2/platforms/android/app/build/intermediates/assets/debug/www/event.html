@@ -19,7 +19,7 @@
 
         .swiper-slide>img {
             width: 100%;
-            height: 100%;
+            height: auto;
         }
 
         .banner {
@@ -56,6 +56,24 @@
         span {
             font-weight: bold;
         }
+        
+        #exampleModal1 {
+            
+        }
+        @media screen and (max-width: 39.99875em)
+.reveal {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    min-height: 100%;
+    margin-left: 0;
+    border: 0;
+    border-radius: 0;
+}
     </style>
 </head>
 
@@ -81,9 +99,8 @@
                     Point To Point<br>
                     <p style="font-size: 50px">Point X 2</p>
                 </div>
-
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-open="exampleModal1">
                 <div id="event3"><span>오늘이 마지막 !</span>(은 아니지만)<br>
                     광고를 보면 나의 기회가<br>
                     부활 되는 거 실화?</div>
@@ -94,6 +111,15 @@
     <div class="swiper-pagination" style="position: relative"></div>
 
 
+    <div class="reveal" id="exampleModal1" data-reveal>
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CW-5DnoLhAE?controls=0" frameborder="0" allowfullscreen  allow="autoplay; encrypted-media"
+        style="margin-top: 10%"> </iframe>
+
+        <button class="close-button" data-close aria-label="Close modal" type="button" id="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
     <div id="mainRoom">
         <footer>
             <div class="mobile-app-icon-bar">
@@ -111,6 +137,8 @@
 <script src="cordova.js"></script>
 <script src="js/backExit.js"></script>
 <script src="js/move.js"></script>
+<script src="js/foundationJS/foundation.core.js"></script>
+<script src="js/foundationJS/foundation.reveal.js"></script>
 <script>
     $(document).foundation();
 </script>
@@ -121,11 +149,10 @@
         speed: 500,
         centeredSlides: true,
         loop: true,
-        /*
         autoplay: {
-            delay: 5000,
+            delay: 3000,
             disableOnInteraction: false,
-        },*/
+        },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,

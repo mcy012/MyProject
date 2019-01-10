@@ -22,18 +22,31 @@
         margin: 0;
         padding: 0;
     }
+    p {
+        margin-bottom: 0px;
+        color: #1779ba;
+    }
+    
+    .start {
+        border: 1px solid;
+        height: 400px;
+    }
 </style>
 
 <body>
     <header align="center" style="margin-top: 10px">
         <button id="goMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px"></button>
     </header>
-    <div align="right" style="font-size: 15px; margin-top: 20px" class="logo">
+    <div align="right" style="font-size: 15px; margin-top: 20px;border-bottom: 1px solid; height: 50%" class="logo">
         <span id='myNick' align="right" style="font-weight: bold" class="logo"></span>
         <span style="font-weight: 100" class="logo">님, 반갑습니다.</span>
     </div>
+    <div style="text-align: right">
+        <p><img src="img/arrow.png" style="width: 60%"></p>
+    </div>
+    
     <div id="mainRoom">
-        <div class="swiper-container"  style="padding-bottom: 0px; padding-top: 30px;">
+        <div class="swiper-container"  style="padding-bottom: 0px; padding-top: 0px; ">
             <div class="swiper-wrapper">
                 <div class="swiper-slide start" id="game1" data-url="easyQuiz"><img src="img/easy.png"></div>
                 <div class="swiper-slide start" id="game2" data-url="normalQuiz"><img src="img/normal.png"></div>

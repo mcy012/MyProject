@@ -51,35 +51,41 @@ $(document).ready(function () {
             pointId: inputId
         };
 
-        if (checkNum == 1) {
-            $.ajax({
-                type: 'POST',
-                url: 'http://192.168.0.149:9000/signUp',
-                data: jsonData,
-                success: function (args) {
-                    alert('회원가입에 성공하셨습니다.');
-                    location.href = "./login.html";
-                },
-                error: function (e) {
-                    if (jsonData.userId == inputId) {
-                        alert("이미 사용 중인 아이디입니다.");
-                    } else {
-                        alert("db 서버 연결 오류");
-                    }
-                }
-            });
+        if ($("#errMsg_02").css("display") != "none" || $("#errMsg_03").css("display") != "none") {
+            alert("올바른 비밀번호를 입력해주십시오.");
+            return;
         } else {
-            alert("아이디 중복을 확인하십시오.")
+            if (checkNum == 1) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://192.168.0.149:9000/signUp',
+                    data: jsonData,
+                    success: function (args) {
+                        alert('회원가입에 성공하셨습니다.');
+                        location.href = "./login.html";
+                    },
+                    error: function (e) {
+                        if (jsonData.userId == inputId) {
+                            alert("이미 사용 중인 아이디입니다.");
+                        } else {
+                            alert("db 서버 연결 오류");
+                        }
+                    }
+                });
+            } else {
+                alert("아이디 중복을 확인하십시오.")
+            }
+
+
+            $.ajax({ //가입시 100시작
+                type: 'POST',
+                url: 'http://192.168.0.149:9000/pointSignUp',
+                data: jsonData2,
+                success: function (args) {},
+                error: function (e) {}
+            });
         }
 
-
-        $.ajax({ //가입시 100시작
-            type: 'POST',
-            url: 'http://192.168.0.149:9000/pointSignUp',
-            data: jsonData2,
-            success: function (args) {},
-            error: function (e) {}
-        });
     });
 
     $(".error").hide();
@@ -97,8 +103,8 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
-    
-    $("#userId").focus(function (){
+
+    $("#userId").focus(function () {
         $("#errMsg_01").hide();
     });
 
@@ -107,7 +113,7 @@ $(document).ready(function () {
 
         return patt.test(id);
     }
-    
+
 
     $('#userPassword1').blur(function (event) {
 
@@ -122,13 +128,13 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
-    
-    
-    $("#userPassword1").focus(function (){
+
+
+    $("#userPassword1").focus(function () {
         $("#errMsg_02").hide();
     });
-    
-    
+
+
     var chkValId = function (password) {
         var patt = new RegExp(/^.*(?=.{6,15})(?=.*[0-9])(?=.*[a-z]).*$/);
 
@@ -158,9 +164,9 @@ $(document).ready(function () {
             return;
         }
     });
-    
-    $("#cer").click(function(){
-        if($("#num").val().length == 0){
+
+    $("#cer").click(function () {
+        if ($("#num").val().length == 0) {
             alert("발송된 인증번호를 입력하십시오.");
         }
     })

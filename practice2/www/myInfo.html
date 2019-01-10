@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0'>
+    <title>내정보</title>
+    <link rel="stylesheet" href="css/foundationCss/foundation.css">
+    <link href="css/bottom.css" rel="stylesheet">
+    <style>
+        .position-left {
+            width: 110px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        table {
+            margin-bottom: 0px
+        }
+
+        a {
+            color: black;
+            text-align: left;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header align="center" style="margin-top: 10px">
+        <button id="goMain"><img src="img/quizLogo.png" style="width: 100px; height: 30px"></button>
+    </header>
+    <div align="center" class="logo">마이 페이지</div>
+    <div align="right" style="margin: 40px 0 20px 0">
+        <span style="font-weight: 100">안녕하세요. </span>
+        <span id='myNick' align="right" style="font-weight: bold"></span>
+        <span>님</span>
+    </div>
+    <table id="my_info_table" class="type02 unstriped">
+        <tr>
+            <th>잔여 포인트:</th>
+            <td id="my_point_total" style="text-align: right; padding-right: 0px"></td>
+            <td>
+                <span>P</span>
+            </td>
+        </tr>
+        <tr>
+            <th>오늘의 남은 기회:</th>
+            <td id="my_left_chance" style="text-align: right;  padding-right: 0px"></td>
+            <td>
+                <span>회</span>
+            </td>
+        </tr>
+        <tr>
+            <th>나의 게임 레벨:</th>
+            <td colspan="2" style="text-align: center" >EASY_MAP<br>1/50</td>
+        </tr>
+    </table>
+    <ul class="vertical menu accordion-menu" data-accordion-menu style="margin-bottom: 100px">
+        <li>
+            <a href="#" style="padding-left: 10px">구매 내역</a>
+            <ul class="menu vertical nested" style="margin-left: 0px">
+                <li style="text-align: right; font-size: 13px; font-weight: 100">상품 구매 내역</li>
+                <li>
+                    <table class="unstriped" style="border: 0px" id="buyList">
+                        <tr style="border-bottom: 1px solid">
+                            <th>
+                                구입 날짜
+                            </th>
+                            <th>
+                                상품 이름
+                            </th>
+                            <th>
+                                사용 포인트
+                            </th>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <button class="button logout">로그아웃</button>
+    <footer>
+        <div class="mobile-app-icon-bar">
+            <button><img src="img/icons8-game-controller-filled-50.png" class="quizRoom"></button>
+            <button><img src="img/icons8-wedding-gift-50.png" class="goods"></button>
+            <button><img src="img/icons8-christmas-star-50.png" class="event"></button>
+            <button style="background-color: #d1d1d1"><img src="img/icons8-more-info-50.png"></button>
+        </div>
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/myInfo.js"></script>
+<script src="js/foundationJS/foundation.min.js"></script>
+<script src="js/move.js"></script>
+<script src="cordova.js"></script>
+<script src="js/backExit.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    var myNick = localStorage.getItem('nickname');
+    var templete = myNick
+    $('#myNick').append(templete);
+
+</script>

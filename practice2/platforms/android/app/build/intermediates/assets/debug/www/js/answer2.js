@@ -26,7 +26,7 @@ $(document).ready(function () {
 
                     var jsonData = {pointTotal:pointData['pointTotal'], pointUpDown:70};
                     
-                    var pointId = localStorage.getItem('id');
+                    var pointId = localStorage.getItem('nickname');
 
                     $.ajax({
                         type: 'PUT',
@@ -49,7 +49,7 @@ $(document).ready(function () {
 
                     var jsonData = {pointTotal:pointData['pointTotal'], pointUpDown:-50};
                     
-                    var pointId = localStorage.getItem('id');
+                    var pointId = localStorage.getItem('nickname');
 
                     $.ajax({
                         type: 'PUT',
