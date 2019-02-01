@@ -50,14 +50,16 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        pagerFragment = PagerFragment.newInstance();
-/*얘네2개를 옮기고 통신성공뒤로
+        //pagerFragment = PagerFragment.newInstance();
+
+/*
+ 얘네2개를 옮기고 통신성공뒤로
 뉴인스턴스 인자로 무비리스트넘겨 페이저로 번들넘겨 페이저에
 for문으로 완성하기
  */
         container = (FrameLayout) findViewById(R.id.container);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.container, pagerFragment).commit();
+        //getSupportFragmentManager().beginTransaction().add(R.id.container, pagerFragment).commit();
 
         if (AppHelper.requestQueue == null) {
             AppHelper.requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -128,6 +130,10 @@ for문으로 완성하기
         ResponseInfo info = gson.fromJson(response, ResponseInfo.class);
         if(info.code == 200) {
             MovieList movieList = gson.fromJson(response, MovieList.class);
+
+            pagerFragment = PagerFragment.newInstance(movieList);
+
+            getSupportFragmentManager().beginTransaction().add(R.id.container, pagerFragment).commitAllowingStateLoss();
 
             for(int i = 0; i < movieList.result.size(); i++) {
                 MovieInfo movieInfo = movieList.result.get(i);

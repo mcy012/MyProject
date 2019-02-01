@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.eda1707.movie2.data.MovieInfo;
 
 import java.util.List;
@@ -56,8 +57,6 @@ public class MovieListFragment extends Fragment {
         movieTitle = (TextView) rootView.findViewById(R.id.movieTitle);
         movieData = (TextView) rootView.findViewById(R.id.movieData);
 
-
-
         Button button = (Button) rootView.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +64,14 @@ public class MovieListFragment extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, detailFragment).commit();
             }
         });
+
+        Log.i("ganzi", "MovieInfo: " + movieInfo.toString());
+
+        String rate = Float.toString(movieInfo.getReservation_rate());
+
+        Glide.with(getContext()).load(movieInfo.getImage()).into(poster);
+        movieTitle.setText(movieInfo.getReservation_grade() + ". " + movieInfo.getTitle());
+        movieData.setText("예매율 " + rate + " % | " + movieInfo.getGrade() + "세 관람가");
 
         return rootView;
     }

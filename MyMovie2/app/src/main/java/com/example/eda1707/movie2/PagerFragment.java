@@ -1,6 +1,7 @@
 package com.example.eda1707.movie2;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,12 +14,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.eda1707.movie2.data.MovieInfo;
+import com.example.eda1707.movie2.data.MovieList;
+
 import java.util.ArrayList;
 
 public class PagerFragment extends Fragment{
 
-    public static  PagerFragment newInstance() {
+    private MovieList movieList;
+
+    public static  PagerFragment newInstance(MovieList movieList) {
         PagerFragment fragmentFirst = new PagerFragment();
+        Bundle args = new Bundle();
+        args.putParcelable("movieList", movieList);
+
+        fragmentFirst.setArguments(args);
 
         return fragmentFirst;
     }
@@ -26,6 +36,8 @@ public class PagerFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.movieList = getArguments().getParcelable("movieList");
     }
 
     @Nullable
@@ -34,7 +46,7 @@ public class PagerFragment extends Fragment{
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.pager_fragment, container,false);
 
         ViewPager pager = (ViewPager) rootView.findViewById(R.id.pager);
-        pager.setOffscreenPageLimit(5);
+        pager.setOffscreenPageLimit(10);
 
         MoviePagerAdapter adapter = new MoviePagerAdapter(getChildFragmentManager());
         /*MovieListFragment fragment1 = new MovieListFragment();
@@ -51,6 +63,10 @@ public class PagerFragment extends Fragment{
 
         MovieListFragment fragment5 = new MovieListFragment();
         adapter.addItem(fragment5);*/
+
+        for(int index=0; index < movieList.result.size(); index++) {
+            adapter.addItem(MovieListFragment.newInstance(movieList.result.get(index)));
+        }
 
         pager.setAdapter(adapter);
 
