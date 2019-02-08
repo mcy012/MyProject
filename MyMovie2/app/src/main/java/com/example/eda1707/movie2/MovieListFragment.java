@@ -15,13 +15,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.eda1707.movie2.data.MovieInfo;
 
-import java.util.List;
-
 public class MovieListFragment extends Fragment {
     MovieDetailFragment detailFragment;
     ImageView poster;
     TextView movieTitle;
     TextView movieData;
+    Button button;
 
     private MovieInfo movieInfo;
 
@@ -47,11 +46,9 @@ public class MovieListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.i("ganzi", ">>>>>>>>>>>> onCreateView");
-
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.movie_list_fragment, container, false);
 
-        detailFragment = new MovieDetailFragment();
+        detailFragment = MovieDetailFragment.newInstance(movieInfo);
 
         poster = (ImageView) rootView.findViewById(R.id.poster);
         movieTitle = (TextView) rootView.findViewById(R.id.movieTitle);

@@ -1,5 +1,7 @@
 package com.example.eda1707.movie2;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,11 +10,15 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -33,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     PagerFragment pagerFragment;
     FrameLayout container;
     MovieListFragment listFragment;
+    int status;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +73,12 @@ for문으로 완성하기
         }
 
         requestMovieList();
+
+        status = NetworkStatus.getConnectivityStatus(getApplicationContext());
+
+        if(status == NetworkStatus.TYPE_NOT_CONNECTED) {
+            show();
+        }
     }
 
     @Override
@@ -85,7 +98,7 @@ for문으로 완성하기
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -128,7 +141,9 @@ for문으로 완성하기
         Gson gson = new Gson();
 
         ResponseInfo info = gson.fromJson(response, ResponseInfo.class);
+
         if(info.code == 200) {
+
             MovieList movieList = gson.fromJson(response, MovieList.class);
 
             pagerFragment = PagerFragment.newInstance(movieList);
@@ -146,5 +161,20 @@ for문으로 완성하기
                 //movieListFragment.setArguments(bundle);
             }
         }
+    }
+
+    void show() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("네트워크가 연결되지 않았습니다. \nWi-Fi 또는 데이터를 활성화 해주세요.");
+        builder.setPositiveButton("다시시도",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+        builder.setCancelable(false);
+        builder.show();
     }
 }
