@@ -70,7 +70,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         PhotoView photoView;
-        MovieDetailInfo movieDetailInfo;
 
         OnItemClickListener listener;
 
