@@ -51,10 +51,7 @@ public class CommentItemView extends LinearLayout {
         textView4.setText(comment);
     }
 
-    public void setRecommend(String recommend) {
-        textView6.setText(recommend);
+    public void setRecommend(int recommend) {
+        textView6.setText(String.valueOf(recommend));
     }
-
-
-
 }

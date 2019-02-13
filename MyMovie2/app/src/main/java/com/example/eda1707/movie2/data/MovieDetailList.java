@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MovieDetailList {
 
-    public ArrayList<MovieDetailInfo> result = new ArrayList<MovieDetailInfo>();
+    private ArrayList<MovieDetailInfo> result = new ArrayList<MovieDetailInfo>();
 
     public ArrayList<MovieDetailInfo> getItems(){
         return result;

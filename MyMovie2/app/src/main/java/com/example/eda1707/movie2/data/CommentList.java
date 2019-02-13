@@ -4,5 +4,19 @@ import java.util.ArrayList;
 
 public class CommentList {
 
-    public ArrayList<CommentInfo> result = new ArrayList<CommentInfo>();
+    private ArrayList<CommentInfo> result = new ArrayList<CommentInfo>();
+
+    private int totalCount;
+
+    public ArrayList<CommentInfo> getResult() {
+        return result;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
 }

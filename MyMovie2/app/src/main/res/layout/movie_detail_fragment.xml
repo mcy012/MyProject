@@ -20,8 +20,7 @@
                 android:id="@+id/detailPoster"
                 android:layout_width="100dp"
                 android:layout_height="140dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/image11" />
+                android:layout_margin="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,7 +39,7 @@
                         android:id="@+id/titleText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="군도"
+                        android:text="제목"
                         android:textColor="@android:color/white"
                         android:textSize="24dp"
                         android:textStyle="bold" />
@@ -56,14 +55,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2014.07.23 개봉"
+                    android:text="개봉일"
                     android:textColor="@android:color/white"
                     android:textSize="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="액션 / 137 분"
+                    android:text="장르 / 시간"
                     android:textColor="@android:color/white"
                     android:textSize="15dp" />
 
@@ -136,7 +135,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="5위 1.8%"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -163,8 +161,7 @@
                     android:layout_gravity="center"
                     android:max="10"
                     android:stepSize="0.1"
-                    android:numStars="5"
-                    android:rating="4.1"/>
+                    android:numStars="5" />
 
 
             </LinearLayout>
@@ -187,7 +184,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="839,399명"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -250,8 +246,7 @@
                 <TextView
                     android:id="@+id/director"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="윤종빈"/>
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -270,8 +265,7 @@
                 <TextView
                     android:id="@+id/actor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="하정우(도치), 강동원(조윤)"/>
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
         </LinearLayout>
@@ -294,10 +288,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </android.support.v7.widget.RecyclerView>
-
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

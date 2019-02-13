@@ -5,9 +5,9 @@ public class CommentItem {
     String id;
     String time;
     String comment;
-    String recommend;
+    int recommend;
 
-    public CommentItem(String id, String time, String comment, String recommend) {
+    public CommentItem(String id, String time, String comment, int recommend) {
         this.id = id;
         this.time = time;
         this.comment = comment;
@@ -38,11 +38,11 @@ public class CommentItem {
         this.comment = comment;
     }
 
-    public String getRecommend() {
+    public int getRecommend() {
         return recommend;
     }
 
-    public void setRecommend(String recommend) {
+    public void setRecommend(int recommend) {
         this.recommend = recommend;
     }
 

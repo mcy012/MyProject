@@ -1,8 +1,10 @@
 package com.example.eda1707.movie2;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,9 +56,11 @@ public class CommentWriteActivity extends AppCompatActivity {
         if(intent != null) {
             float rating = intent.getFloatExtra("rating", 0.0f);
             String title = intent.getStringExtra("title");
+            Bitmap bitmap = intent.getParcelableExtra("age");
 
             ratingBar.setRating(rating);
             titleText.setText(title);
+            ageImage.setImageBitmap(bitmap);
 
         }
     }

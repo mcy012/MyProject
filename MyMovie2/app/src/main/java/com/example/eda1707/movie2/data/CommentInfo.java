@@ -97,4 +97,19 @@ public class CommentInfo {
     public void setRecommend(int recommend) {
         this.recommend = recommend;
     }
+
+    @Override
+    public String toString() {
+        return "CommentInfo{" +
+                "id=" + id +
+                ", writer='" + writer + '\'' +
+                ", movieId=" + movieId +
+                ", writer_image='" + writer_image + '\'' +
+                ", time='" + time + '\'' +
+                ", timestamp=" + timestamp +
+                ", rating=" + rating +
+                ", contents='" + contents + '\'' +
+                ", recommend=" + recommend +
+                '}';
+    }
 }

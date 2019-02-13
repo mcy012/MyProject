@@ -1,7 +1,12 @@
 package com.example.eda1707.movie2;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -26,36 +32,45 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.eda1707.movie2.data.CommentInfo;
 import com.example.eda1707.movie2.data.CommentList;
-import com.example.eda1707.movie2.data.MovieAdapter;
 import com.example.eda1707.movie2.data.MovieDetailInfo;
 import com.example.eda1707.movie2.data.MovieDetailList;
 import com.example.eda1707.movie2.data.MovieInfo;
-import com.example.eda1707.movie2.data.MovieList;
+import com.example.eda1707.movie2.data.PhotoInfoDto;
+import com.example.eda1707.movie2.data.PhotoType;
 import com.example.eda1707.movie2.data.ResponseInfo;
-import com.github.chrisbanes.photoview.PhotoView;
 import com.google.gson.Gson;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MovieDetailFragment extends Fragment {
 
     TextView likeCountView, dislikeCountView, titleText, synopsis, reservation, audience, director, actor;
-    Button likeButton, dislikeButton;
+    Button likeButton, dislikeButton, all;
     ImageView imageView2, ageImage, detailPoster;
     RatingBar ratingBar;
-    PhotoView photoView;
 
     ListView listView;
-
-    RecyclerView recyclerView;
-
-    MovieAdapter movieAdapter;
 
     boolean likeState = false;
     boolean dislikeState = false;
 
     private MovieInfo movieInfo;
 
+    RecyclerView recyclerView;
+
+    MovieAdapter adapter;
+
+    int countTotal;
+
+    /**
+     * newinstance로 프래그먼트에 movieinfo 값 넘겨주기
+     * @param movieInfo
+     * @return
+     */
     public static MovieDetailFragment newInstance(MovieInfo movieInfo) {
         MovieDetailFragment fragmentFirst = new MovieDetailFragment();
         Bundle args = new Bundle();
@@ -77,11 +92,10 @@ public class MovieDetailFragment extends Fragment {
             AppHelper.requestQueue = Volley.newRequestQueue(getContext());
         }
 
+        getActivity().setTitle("영화 상세");
+
         requestMovieDetailList();
         requestCommentList();
-
-
-
     }
 
     @Nullable
@@ -91,6 +105,7 @@ public class MovieDetailFragment extends Fragment {
 
         likeButton = (Button) rootView.findViewById(R.id.likeButton);
         dislikeButton = (Button) rootView.findViewById(R.id.dislikeButton);
+        all = (Button) rootView.findViewById(R.id.all);
 
         likeCountView = (TextView) rootView.findViewById(R.id.likeCountView);
         dislikeCountView = (TextView) rootView.findViewById(R.id.dislikeCountView);
@@ -111,22 +126,6 @@ public class MovieDetailFragment extends Fragment {
         detailPoster = (ImageView) rootView.findViewById(R.id.detailPoster);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-
-        photoView = (PhotoView) rootView.findViewById(R.id.photoView);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false);
-        recyclerView.setLayoutManager(layoutManager);
-
-        MovieAdapter adapter = new MovieAdapter(getContext());
-
-        recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new MovieAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(MovieAdapter.ViewHolder holder, View view, int i) {
-
-            }
-        });
 
         likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +165,13 @@ public class MovieDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showCommentWriteActivity();
+            }
+        });
+
+        all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCommentAllActivity();
             }
         });
 
@@ -213,15 +219,19 @@ public class MovieDetailFragment extends Fragment {
 
 
     class CommentAdapter extends BaseAdapter {
-        ArrayList<CommentItem> items = new ArrayList<CommentItem>();
+        ArrayList<CommentInfo> items = new ArrayList<CommentInfo>();
 
         @Override
         public int getCount() {
             return items.size();
         }
 
-        public void addItem(CommentItem item) {
+        public void addItem(CommentInfo item) {
             items.add(item);
+        }
+
+        public void addItems(ArrayList<CommentInfo> items) {
+            this.items.addAll(items);
         }
 
         @Override
@@ -238,10 +248,10 @@ public class MovieDetailFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             CommentItemView view = new CommentItemView(getContext());
 
-            CommentItem item = items.get(position);
+            CommentInfo item = items.get(position);
             view.setId(item.getId());
             view.setTime(item.getTime());
-            view.setComment(item.getComment());
+            view.setComment(item.getContents());
             view.setRecommend(item.getRecommend());
 
             return view;
@@ -268,6 +278,22 @@ public class MovieDetailFragment extends Fragment {
                 String contents = intent.getStringExtra("contents");
             }
         }
+    }
+
+    public void showCommentAllActivity() {
+        float rating = ratingBar.getRating();
+        String title = titleText.getText().toString();
+        Bitmap bitmap = ((BitmapDrawable)ageImage.getDrawable()).getBitmap();
+        int commentTotal = countTotal;
+
+        Intent intent = new Intent(getContext(), CommentAllActivity.class);
+
+        intent.putExtra("rating", rating);
+        intent.putExtra("title", title);
+        intent.putExtra("age", bitmap);
+        intent.putExtra("commentTotal", commentTotal);
+
+        startActivity(intent);
     }
 
     public void requestMovieDetailList() {
@@ -303,10 +329,8 @@ public class MovieDetailFragment extends Fragment {
         if (info.code == 200) {
             MovieDetailList movieDetailList = gson.fromJson(response, MovieDetailList.class);
 
-            movieAdapter.addItems(movieDetailList.getItems());
-
-            for (int i = 0; i < movieDetailList.result.size(); i++) {
-                MovieDetailInfo movieDetailInfo = movieDetailList.result.get(i);
+            for (int i = 0; i < movieDetailList.getItems().size(); i++) {
+                MovieDetailInfo movieDetailInfo = movieDetailList.getItems().get(i);
 
                 String rate = Float.toString(movieDetailInfo.getReservation_rate());
                 String grade = Integer.toString(movieDetailInfo.getReservation_grade());
@@ -324,14 +348,55 @@ public class MovieDetailFragment extends Fragment {
                 audience.setText(audienceCount + "명");
                 director.setText(movieDetailInfo.getDirector());
                 actor.setText(movieDetailInfo.getActor());
+                ratingBar.setRating(movieDetailInfo.getUser_rating());
 
+                if (movieDetailInfo.getGrade() == 12) {
+                    ageImage.setImageResource(R.drawable.ic_12);
+                } else if (movieDetailInfo.getGrade() == 15) {
+                    ageImage.setImageResource(R.drawable.ic_15);
+                } else if (movieDetailInfo.getGrade() == 19) {
+                    ageImage.setImageResource(R.drawable.ic_19);
+                } else {
+                    ageImage.setImageResource(R.drawable.ic_all);
+                }
+
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(layoutManager);
+                /**
+                 * MovieAdapter 만들때 사진이랑 비디오 값을 넘겨준다. adapter에서 넘겨준 값 조종
+                  */
+                adapter = new MovieAdapter(getContext(), movieDetailInfo.getPhotos(), movieDetailInfo.getVideos());
+                recyclerView.setAdapter(adapter);
+
+                adapter.setOnItemClickListener(new MovieAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(MovieAdapter.ViewHolder holder, View view, int position) {
+
+                        Log.i("ganzi", adapter.getItem(position).toString());
+                        showPhotoActivity(adapter.getItem(position));
+                    }
+                });
             }
+        }
+    }
+
+    public void showPhotoActivity(PhotoInfoDto photoInfoDto){
+
+        if (photoInfoDto.getType() == PhotoType.IMAGE) {
+            Intent intent = new Intent(getContext(), PhotoActivity.class);
+            intent.putExtra("imgUrl", photoInfoDto.getImgUrl());
+            startActivity(intent);
+        } else {
+            String videoUrl = photoInfoDto.getVideoUrl();
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl));
+            startActivity(intent);
         }
     }
 
     public void requestCommentList() {
         String url = "http://" + AppHelper.host + ":" + AppHelper.port + "/movie/readCommentList";
-        url += "?" + "id=" + movieInfo.getId() + "&limit=2";
+        url += "?" + "id=" + movieInfo.getId() + "?limit=2";
 
         StringRequest request = new StringRequest(
                 Request.Method.GET,
@@ -349,7 +414,6 @@ public class MovieDetailFragment extends Fragment {
                     }
                 }
         );
-
         request.setShouldCache(false);
         AppHelper.requestQueue.add(request);
     }
@@ -362,17 +426,13 @@ public class MovieDetailFragment extends Fragment {
         if (info.code == 200) {
             CommentList commentList = gson.fromJson(response, CommentList.class);
 
-            for (int i = 0; i < commentList.result.size(); i++) {
-                CommentInfo commentInfo = commentList.result.get(i);
+            CommentAdapter adapter = new CommentAdapter();
 
-                CommentAdapter adapter = new CommentAdapter();
+            countTotal = commentList.getTotalCount();
 
-                String recommend = Integer.toString(commentInfo.getRecommend());
-                adapter.addItem(new CommentItem(commentInfo.getWriter(), commentInfo.getTime(), commentInfo.getContents(), recommend));
-                listView.setAdapter(adapter);
-            }
+            adapter.addItems(commentList.getResult());
 
+            listView.setAdapter(adapter);
         }
-
     }
 }
