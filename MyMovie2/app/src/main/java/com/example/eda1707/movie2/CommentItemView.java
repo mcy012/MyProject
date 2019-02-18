@@ -37,10 +37,11 @@ public class CommentItemView extends LinearLayout {
         textView3 = (TextView) findViewById(R.id.textView3);
         textView4 = (TextView) findViewById(R.id.textView4);
         textView6= (TextView) findViewById(R.id.textView6);
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
     }
 
-    public void setId(String id) {
-        textView.setText(id);
+    public void setWriter(String writer) {
+        textView.setText(writer);
     }
 
     public void setTime(String time) {
@@ -53,5 +54,9 @@ public class CommentItemView extends LinearLayout {
 
     public void setRecommend(int recommend) {
         textView6.setText(String.valueOf(recommend));
+    }
+
+    public void setRating(float rating) {
+        ratingBar.setRating(rating);
     }
 }

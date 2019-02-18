@@ -163,7 +163,7 @@ for문으로 완성하기
         }
     }
 
-    void show() {
+    public void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("네트워크가 연결되지 않았습니다. \nWi-Fi 또는 데이터를 활성화 해주세요.");
         builder.setPositiveButton("다시시도",
@@ -172,8 +172,12 @@ for문으로 완성하기
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        overridePendingTransition(0, 0);
                     }
                 });
+
         builder.setCancelable(false);
         builder.show();
     }

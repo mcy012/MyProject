@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -18,11 +22,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.eda1707.movie2.data.CommentInfo;
 import com.example.eda1707.movie2.data.CommentList;
 import com.example.eda1707.movie2.data.MovieInfo;
 import com.example.eda1707.movie2.data.ResponseInfo;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommentAllActivity extends AppCompatActivity {
@@ -31,7 +37,10 @@ public class CommentAllActivity extends AppCompatActivity {
     RatingBar ratingAll;
     ListView commentAllListView;
 
-    private MovieInfo movieInfo;
+    int movieId;
+
+    float rating;
+    String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,21 +67,57 @@ public class CommentAllActivity extends AppCompatActivity {
         if (AppHelper.requestQueue == null) {
             AppHelper.requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-
         requestCommentAllList();
     }
 
-    public void showCommentActivity() {
-        Intent intent = new Intent(getApplicationContext(), CommentWriteActivity.class);
-        startActivity(intent);
+    class CommentAdapter extends BaseAdapter {
+        ArrayList<CommentInfo> items = new ArrayList<CommentInfo>();
+
+        @Override
+        public int getCount() {
+            return items.size();
+        }
+
+        public void addItem(CommentInfo item) {
+            items.add(item);
+        }
+
+        public void addItems(ArrayList<CommentInfo> items) {
+            this.items.addAll(items);
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return items.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            CommentItemView view = new CommentItemView(getApplicationContext());
+
+            CommentInfo item = items.get(position);
+            view.setWriter(item.getWriter());
+            view.setTime(item.getTime());
+            view.setComment(item.getContents());
+            view.setRecommend(item.getRecommend());
+            view.setRating(item.getRating());
+
+            return view;
+        }
     }
 
     public void processIntent(Intent intent) {
         if (intent != null) {
-            float rating = intent.getFloatExtra("rating", 0.0f);
-            String title = intent.getStringExtra("title");
+            rating = intent.getFloatExtra("rating", 0.0f);
+            title = intent.getStringExtra("title");
             Bitmap bitmap = intent.getParcelableExtra("age");
             int total = intent.getIntExtra("commentTotal",0);
+            movieId = intent.getIntExtra("movieId",0);
 
             titleAll.setText(title);
             ratingAll.setRating(rating);
@@ -81,9 +126,30 @@ public class CommentAllActivity extends AppCompatActivity {
         }
     }
 
+    public void showCommentActivity() {
+
+        Intent intent = new Intent(getApplicationContext(), CommentWriteActivity.class);
+        intent.putExtra("rating", rating);
+        intent.putExtra("title", title);
+        intent.putExtra("movieId", movieId);
+
+        startActivityForResult(intent, 101);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if (requestCode == 101) {
+            if (intent != null) {
+                requestCommentAllList();
+            }
+        }
+    }
+
     public void requestCommentAllList() {
         String url = "http://" + AppHelper.host + ":" + AppHelper.port + "/movie/readCommentList";
-        url += "?" + "id=" + movieInfo.getId();
+        url += "?" + "id=" + movieId;
 
         StringRequest request = new StringRequest(
                 Request.Method.GET,
@@ -113,11 +179,17 @@ public class CommentAllActivity extends AppCompatActivity {
         if (info.code == 200) {
             CommentList commentList = gson.fromJson(response, CommentList.class);
 
-            MovieDetailFragment.CommentAdapter adapter = new MovieDetailFragment.CommentAdapter();
+            CommentAdapter adapter = new CommentAdapter();
 
             adapter.addItems(commentList.getResult());
 
             commentAllListView.setAdapter(adapter);
+
+            //Log.i("ganzi", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>" + movieInfo.toString());
         }
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

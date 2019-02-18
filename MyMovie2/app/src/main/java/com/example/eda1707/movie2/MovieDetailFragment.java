@@ -10,6 +10,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -40,6 +41,8 @@ import com.example.eda1707.movie2.data.PhotoType;
 import com.example.eda1707.movie2.data.ResponseInfo;
 import com.google.gson.Gson;
 
+import org.w3c.dom.Text;
+
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -48,7 +51,7 @@ import java.util.List;
 
 public class MovieDetailFragment extends Fragment {
 
-    TextView likeCountView, dislikeCountView, titleText, synopsis, reservation, audience, director, actor;
+    TextView likeCountView, dislikeCountView, titleText, synopsis, reservation, audience, director, actor, openDay, genreTime;
     Button likeButton, dislikeButton, all;
     ImageView imageView2, ageImage, detailPoster;
     RatingBar ratingBar;
@@ -122,6 +125,8 @@ public class MovieDetailFragment extends Fragment {
         audience = (TextView) rootView.findViewById(R.id.audience);
         director = (TextView) rootView.findViewById(R.id.director);
         actor = (TextView) rootView.findViewById(R.id.actor);
+        openDay = (TextView) rootView.findViewById(R.id.openDay);
+        genreTime = (TextView) rootView.findViewById(R.id.genreTime);
 
         detailPoster = (ImageView) rootView.findViewById(R.id.detailPoster);
 
@@ -249,10 +254,11 @@ public class MovieDetailFragment extends Fragment {
             CommentItemView view = new CommentItemView(getContext());
 
             CommentInfo item = items.get(position);
-            view.setId(item.getId());
+            view.setWriter(item.getWriter());
             view.setTime(item.getTime());
             view.setComment(item.getContents());
             view.setRecommend(item.getRecommend());
+            view.setRating(item.getRating());
 
             return view;
         }
@@ -261,23 +267,22 @@ public class MovieDetailFragment extends Fragment {
     public void showCommentWriteActivity() {
         float rating = ratingBar.getRating();
         String title = titleText.getText().toString();
+        int movieId = movieInfo.getId();
 
         Intent intent = new Intent(getContext(), CommentWriteActivity.class);
         intent.putExtra("rating", rating);
         intent.putExtra("title", title);
+        intent.putExtra("movieId", movieId);
 
-        startActivityForResult(intent, 101);
+        startActivity(intent);
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
+    public void onResume() {
+        super.onResume();
 
-        if (requestCode == 101) {
-            if (intent != null) {
-                String contents = intent.getStringExtra("contents");
-            }
-        }
+        requestCommentList();
+        Log.i("ganzi", ">>>>>>>>>>>>>> 다시 살아났다?");
     }
 
     public void showCommentAllActivity() {
@@ -285,6 +290,7 @@ public class MovieDetailFragment extends Fragment {
         String title = titleText.getText().toString();
         Bitmap bitmap = ((BitmapDrawable)ageImage.getDrawable()).getBitmap();
         int commentTotal = countTotal;
+        int movieId = movieInfo.getId();
 
         Intent intent = new Intent(getContext(), CommentAllActivity.class);
 
@@ -292,6 +298,7 @@ public class MovieDetailFragment extends Fragment {
         intent.putExtra("title", title);
         intent.putExtra("age", bitmap);
         intent.putExtra("commentTotal", commentTotal);
+        intent.putExtra("movieId", movieId);
 
         startActivity(intent);
     }
@@ -338,6 +345,7 @@ public class MovieDetailFragment extends Fragment {
                 String like = Integer.toString(movieDetailInfo.getLike());
                 String dislike = Integer.toString(movieDetailInfo.getDislike());
                 String audienceCount = Integer.toString(movieDetailInfo.getAudience());
+                String duration = Integer.toString(movieDetailInfo.getDuration());
 
                 titleText.setText(movieDetailInfo.getTitle());
                 Glide.with(getContext()).load(movieDetailInfo.getImage()).into(detailPoster);
@@ -349,6 +357,8 @@ public class MovieDetailFragment extends Fragment {
                 director.setText(movieDetailInfo.getDirector());
                 actor.setText(movieDetailInfo.getActor());
                 ratingBar.setRating(movieDetailInfo.getUser_rating());
+                openDay.setText(movieDetailInfo.getDate() + " 개봉");
+                genreTime.setText(movieDetailInfo.getGenre() + " / " + duration + " 분");
 
                 if (movieDetailInfo.getGrade() == 12) {
                     ageImage.setImageResource(R.drawable.ic_12);
@@ -394,9 +404,38 @@ public class MovieDetailFragment extends Fragment {
         }
     }
 
+    /**
+     * 에러처리할라고 하는데 흠
+     */
+
+    class NullAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return 0;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ErrorCommentItemView view = new ErrorCommentItemView(getContext());
+
+            return view;
+        }
+    }
+
     public void requestCommentList() {
-        String url = "http://" + AppHelper.host + ":" + AppHelper.port + "/movie/readCommentList";
-        url += "?" + "id=" + movieInfo.getId() + "?limit=2";
+        String url = "http://" + AppHelper.host + ":" + AppHelper.port + "/movie/readntList";
+        url += "?" + "id=" + movieInfo.getId() + "&lit=2";
 
         StringRequest request = new StringRequest(
                 Request.Method.GET,
@@ -410,7 +449,8 @@ public class MovieDetailFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.i("ganzi",">>>>>>>>>>>>>>>>>>>>>" + error.networkResponse.statusCode);
+                        errorResponseComment(error);
                     }
                 }
         );
@@ -435,4 +475,14 @@ public class MovieDetailFragment extends Fragment {
             listView.setAdapter(adapter);
         }
     }
+
+    /**
+     * 에러처리할라고하는중
+     */
+    public void errorResponseComment(VolleyError error) {
+        if(error.networkResponse.statusCode == 404){
+            Toast.makeText(getContext(),"404에러",Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
