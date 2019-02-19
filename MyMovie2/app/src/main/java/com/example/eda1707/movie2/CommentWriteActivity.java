@@ -1,11 +1,13 @@
 package com.example.eda1707.movie2;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -87,7 +89,7 @@ public class CommentWriteActivity extends AppCompatActivity {
         final String contents = contentsInput.getText().toString();
 
         if(contents.length() == 0) {
-            Toast.makeText(getApplicationContext(), "한줄평을 입력하세요.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "한줄평을 한 글자 이상 입력하세요.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -103,12 +105,16 @@ public class CommentWriteActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        setResult(RESULT_OK);
+
+                        finish();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        show();
                     }
                 }) {
                     protected Map<String, String> getParams() {
@@ -123,9 +129,28 @@ public class CommentWriteActivity extends AppCompatActivity {
         request.setShouldCache(false);
         AppHelper.requestQueue.add(request);
 
-        setResult(Activity.RESULT_OK, intent);
+    }
 
-        finish();
+    public void show() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("한줄평을 보내는 데 실패하였습니다. \n연결을 확인해주세요.");
+        builder.setPositiveButton("재전송",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        returnToMain();
+                    }
+                });
+        builder.setNegativeButton("취소",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+
+        builder.setCancelable(false);
+        builder.show();
     }
 
 }

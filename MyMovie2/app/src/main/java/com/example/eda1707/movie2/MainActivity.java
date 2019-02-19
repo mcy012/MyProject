@@ -74,6 +74,10 @@ for문으로 완성하기
 
         requestMovieList();
 
+
+        /**
+         * 인터넷 연결 확인해서 안돼있으면 다이얼로그 띄우기
+         */
         status = NetworkStatus.getConnectivityStatus(getApplicationContext());
 
         if(status == NetworkStatus.TYPE_NOT_CONNECTED) {
@@ -112,6 +116,9 @@ for문으로 완성하기
         return true;
     }
 
+    /**
+     * 영화리스트 요청
+     */
     public void requestMovieList() {
         String url = "http://" + AppHelper.host + ":" + AppHelper.port + "/movie/readMovieList";
         url += "?" + "type=1";

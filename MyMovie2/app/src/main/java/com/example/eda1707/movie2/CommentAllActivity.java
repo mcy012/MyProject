@@ -5,12 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -36,11 +38,14 @@ public class CommentAllActivity extends AppCompatActivity {
     ImageView ageAll, commentWrite;
     RatingBar ratingAll;
     ListView commentAllListView;
+    ConstraintLayout errorCommentAll;
 
     int movieId;
 
     float rating;
     String title;
+
+    Button refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,17 @@ public class CommentAllActivity extends AppCompatActivity {
         commentAllListView = (ListView) findViewById(R.id.commentAllListView);
         totalCount = (TextView) findViewById(R.id.totalCount);
         commentWrite = (ImageView) findViewById(R.id.commentWrite);
+
+        errorCommentAll = (ConstraintLayout) findViewById(R.id.erorrCommentAll);
+
+        refresh = (Button) findViewById(R.id.refresh);
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestCommentAllList();
+            }
+        });
 
         Intent intent = getIntent();
         processIntent(intent);
@@ -163,7 +179,7 @@ public class CommentAllActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        errorResponseCommentAll();
                     }
                 }
         );
@@ -187,9 +203,12 @@ public class CommentAllActivity extends AppCompatActivity {
 
             //Log.i("ganzi", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>" + movieInfo.toString());
         }
+        errorCommentAll.setVisibility(View.INVISIBLE);
+        commentAllListView.setVisibility(View.VISIBLE);
     }
 
-    public void onBackPressed() {
-        super.onBackPressed();
+    public void errorResponseCommentAll() {
+        errorCommentAll.setVisibility(View.VISIBLE);
+        commentAllListView.setVisibility(View.INVISIBLE);
     }
 }

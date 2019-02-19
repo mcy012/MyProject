@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
@@ -52,7 +53,7 @@ import java.util.List;
 public class MovieDetailFragment extends Fragment {
 
     TextView likeCountView, dislikeCountView, titleText, synopsis, reservation, audience, director, actor, openDay, genreTime;
-    Button likeButton, dislikeButton, all;
+    Button likeButton, dislikeButton, all, refresh;
     ImageView imageView2, ageImage, detailPoster;
     RatingBar ratingBar;
 
@@ -68,6 +69,8 @@ public class MovieDetailFragment extends Fragment {
     MovieAdapter adapter;
 
     int countTotal;
+
+    ConstraintLayout errorMessage;
 
     /**
      * newinstance로 프래그먼트에 movieinfo 값 넘겨주기
@@ -132,6 +135,10 @@ public class MovieDetailFragment extends Fragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
+        errorMessage = (ConstraintLayout) rootView.findViewById(R.id.errorMessage);
+
+        refresh = (Button) rootView.findViewById(R.id.refresh);
+
         likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,6 +184,13 @@ public class MovieDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showCommentAllActivity();
+            }
+        });
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestCommentList();
             }
         });
 
@@ -277,6 +291,9 @@ public class MovieDetailFragment extends Fragment {
         startActivity(intent);
     }
 
+    /**
+     * 프로그먼트가 resume상태일 때 댓글목록요청 다시하기
+     */
     @Override
     public void onResume() {
         super.onResume();
@@ -284,6 +301,10 @@ public class MovieDetailFragment extends Fragment {
         requestCommentList();
         Log.i("ganzi", ">>>>>>>>>>>>>> 다시 살아났다?");
     }
+
+    /**
+     * 한줄평모두보기
+     */
 
     public void showCommentAllActivity() {
         float rating = ratingBar.getRating();
@@ -303,6 +324,10 @@ public class MovieDetailFragment extends Fragment {
         startActivity(intent);
     }
 
+    /**
+     * 영화상세요청
+     */
+
     public void requestMovieDetailList() {
         String url = "http://" + AppHelper.host + ":" + AppHelper.port + "/movie/readMovie";
         url += "?" + "id=" + movieInfo.getId();
@@ -319,7 +344,6 @@ public class MovieDetailFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 }
         );
@@ -405,37 +429,11 @@ public class MovieDetailFragment extends Fragment {
     }
 
     /**
-     * 에러처리할라고 하는데 흠
+     * 댓글목록요청
      */
-
-    class NullAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return 0;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ErrorCommentItemView view = new ErrorCommentItemView(getContext());
-
-            return view;
-        }
-    }
-
     public void requestCommentList() {
-        String url = "http://" + AppHelper.host + ":" + AppHelper.port + "/movie/readntList";
-        url += "?" + "id=" + movieInfo.getId() + "&lit=2";
+        String url = "http://" + AppHelper.host + ":" + AppHelper.port + "/movie/readCommentList";
+        url += "?" + "id=" + movieInfo.getId() + "&limit=2";
 
         StringRequest request = new StringRequest(
                 Request.Method.GET,
@@ -449,7 +447,6 @@ public class MovieDetailFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("ganzi",">>>>>>>>>>>>>>>>>>>>>" + error.networkResponse.statusCode);
                         errorResponseComment(error);
                     }
                 }
@@ -474,15 +471,15 @@ public class MovieDetailFragment extends Fragment {
 
             listView.setAdapter(adapter);
         }
+        errorMessage.setVisibility(View.INVISIBLE);
+        listView.setVisibility(View.VISIBLE);
     }
 
     /**
      * 에러처리할라고하는중
      */
     public void errorResponseComment(VolleyError error) {
-        if(error.networkResponse.statusCode == 404){
-            Toast.makeText(getContext(),"404에러",Toast.LENGTH_SHORT).show();
-        }
+        errorMessage.setVisibility(View.VISIBLE);
+        listView.setVisibility(View.INVISIBLE);
     }
-
 }
