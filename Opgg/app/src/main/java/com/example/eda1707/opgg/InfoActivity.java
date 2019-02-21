@@ -9,6 +9,8 @@ import android.widget.TextView;
 public class InfoActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView nickName;
+    TextView tierRank;
+    TextView tierInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +18,8 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         nickName = (TextView) findViewById(R.id.nickName);
+        tierRank = (TextView) findViewById(R.id.tierRank);
+        tierInfo = (TextView) findViewById(R.id.tierInfo);
 
         Intent intent = getIntent();
         proccessIntent(intent);

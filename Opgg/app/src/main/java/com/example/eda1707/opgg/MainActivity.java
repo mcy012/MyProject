@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.eda1707.opgg.dto.MyInfoDto;
+
 public class MainActivity extends AppCompatActivity {
     EditText editText;
     Button button;
@@ -26,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
                 intent.putExtra("nickName", editText.getText().toString());
+
+                OPGG opgg = new OPGG();
+                try {
+                    MyInfoDto myInfoDto = opgg.getMyInfo("hideonbush");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 startActivity(intent);
             }
         });
