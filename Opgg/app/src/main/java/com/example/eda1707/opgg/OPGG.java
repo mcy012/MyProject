@@ -1,5 +1,7 @@
 package com.example.eda1707.opgg;
 
+import android.util.Log;
+
 import com.example.eda1707.opgg.dto.MyInfoDto;
 import com.example.eda1707.opgg.dto.MyScoreDto;
 
@@ -50,6 +52,7 @@ public class OPGG {
             String assist= gameElement.select(".Assist").text();
 
             myInfoDto.addMyScore(new MyScoreDto(gameType, gameResult, champName, kill, death, assist));
+            Log.i("ganzi",">>>>>>>>>>>>>>>>>>>>>>>>>" + myInfoDto.getMyScoreDtoList());
         }
         //System.out.println(gameElements);
         return myInfoDto;
